@@ -14,12 +14,12 @@ description: "Ce manuel est le matériel des travaux pratiques pour le cours GEO
 
 # Introduction {.unnumbered}
 
-Ce manuel est le matériel des travaux pratiques 2024-2025 pour le cours GEOG-F-404 Méthodes Quantitatives en Géographie à l'Université Libre de Bruxelles.
+Ce manuel est le matériel des travaux pratiques pour le cours GEOG-F-404 Méthode quantitative en géographie à l'Université Libre de Bruxelles.
 
 Il contient 3 chapitres:
 
-1.  [Régression](https://bookdown.org/hugoperilleux/manuel_geo_quanti/r%C3%A9gressions.html)
+1.  Régression linéaires
 
-2.  [Analyse en composantes principales](https://bookdown.org/hugoperilleux/manuel_geo_quanti/analyse-en-composantes-principales.html)
+2.  Analyse en composantes principales
 
-3.  [Classification](https://bookdown.org/hugoperilleux/manuel_geo_quanti/classification.html)
+3.  Classification
