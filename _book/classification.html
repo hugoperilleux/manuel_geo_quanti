@@ -1,262 +1,104 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Classification | Méthodes Quantitatives en Géographie</title>
-  <meta name="description" content="Ce manuel est le matériel des travaux pratiques pour le cours GEOG-F-404 Méthode quantitative en géographie à l’Université Libre de Bruxelles." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 3 Classification | Méthodes Quantitatives en Géographie" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="Ce manuel est le matériel des travaux pratiques pour le cours GEOG-F-404 Méthode quantitative en géographie à l’Université Libre de Bruxelles." />
-  <meta name="github-repo" content="hugoperilleux/manuel_geo_quanti" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Classification | Méthodes Quantitatives en Géographie" />
-  
-  <meta name="twitter:description" content="Ce manuel est le matériel des travaux pratiques pour le cours GEOG-F-404 Méthode quantitative en géographie à l’Université Libre de Bruxelles." />
-  
-
-<meta name="author" content="Hugo Périlleux" />
-
-
-<meta name="date" content="2024-10-18" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="analyse-en-composantes-principales.html"/>
-
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapitre 3 Classification | Méthodes Quantitatives en Géographie</title>
+<meta name="author" content="Hugo Périlleux">
+<meta name="description" content="3.1 Objectifs Ce tp a pour objectif de réaliser une classification ascendante hiérarchique des secteurs statistiques de Bruxelles en utilisant des variables de la structure de la propriété des...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Chapitre 3 Classification | Méthodes Quantitatives en Géographie">
+<meta property="og:type" content="book">
+<meta property="og:description" content="3.1 Objectifs Ce tp a pour objectif de réaliser une classification ascendante hiérarchique des secteurs statistiques de Bruxelles en utilisant des variables de la structure de la propriété des...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapitre 3 Classification | Méthodes Quantitatives en Géographie">
+<meta name="twitter:description" content="3.1 Objectifs Ce tp a pour objectif de réaliser une classification ascendante hiérarchique des secteurs statistiques de Bruxelles en utilisant des variables de la structure de la propriété des...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="régressions.html"><a href="régressions.html"><i class="fa fa-check"></i><b>1</b> Régressions</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="régressions.html"><a href="régressions.html#préparation"><i class="fa fa-check"></i><b>1.1</b> Préparation</a></li>
-<li class="chapter" data-level="1.2" data-path="régressions.html"><a href="régressions.html#analyse-de-régression"><i class="fa fa-check"></i><b>1.2</b> Analyse de régression</a>
-<ul>
-<li class="chapter" data-level="1.2.1" data-path="régressions.html"><a href="régressions.html#visualiser-et-supprimer-les-outliers"><i class="fa fa-check"></i><b>1.2.1</b> Visualiser et supprimer les outliers</a></li>
-<li class="chapter" data-level="1.2.2" data-path="régressions.html"><a href="régressions.html#régression-simple"><i class="fa fa-check"></i><b>1.2.2</b> Régression simple</a></li>
-<li class="chapter" data-level="1.2.3" data-path="régressions.html"><a href="régressions.html#régression-multiple"><i class="fa fa-check"></i><b>1.2.3</b> Régression multiple</a></li>
-<li class="chapter" data-level="1.2.4" data-path="régressions.html"><a href="régressions.html#régression-polynomiale"><i class="fa fa-check"></i><b>1.2.4</b> Régression polynomiale</a></li>
-<li class="chapter" data-level="1.2.5" data-path="régressions.html"><a href="régressions.html#visualisation"><i class="fa fa-check"></i><b>1.2.5</b> Visualisation</a></li>
-<li class="chapter" data-level="1.2.6" data-path="régressions.html"><a href="régressions.html#réaliser-les-tests-des-hypothèses"><i class="fa fa-check"></i><b>1.2.6</b> Réaliser les tests des hypothèses</a></li>
-</ul></li>
-<li class="chapter" data-level="1.3" data-path="régressions.html"><a href="régressions.html#analyse-géographique"><i class="fa fa-check"></i><b>1.3</b> Analyse géographique</a>
-<ul>
-<li class="chapter" data-level="1.3.1" data-path="régressions.html"><a href="régressions.html#analyse-géographique-simple"><i class="fa fa-check"></i><b>1.3.1</b> Analyse géographique simple</a></li>
-<li class="chapter" data-level="1.3.2" data-path="régressions.html"><a href="régressions.html#cartographier-les-résidus"><i class="fa fa-check"></i><b>1.3.2</b> Cartographier les résidus</a></li>
-<li class="chapter" data-level="1.3.3" data-path="régressions.html"><a href="régressions.html#ajouter-une-variable-géographique"><i class="fa fa-check"></i><b>1.3.3</b> Ajouter une variable géographique</a></li>
-<li class="chapter" data-level="1.3.4" data-path="régressions.html"><a href="régressions.html#analyse-de-corrélation-spatiale"><i class="fa fa-check"></i><b>1.3.4</b> Analyse de corrélation spatiale</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html"><i class="fa fa-check"></i><b>2</b> Analyse en Composantes Principales</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#objectif"><i class="fa fa-check"></i><b>2.1</b> Objectif:</a></li>
-<li class="chapter" data-level="2.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#données"><i class="fa fa-check"></i><b>2.2</b> Données:</a></li>
-<li class="chapter" data-level="2.3" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#importation-des-données"><i class="fa fa-check"></i><b>2.3</b> Importation des données</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#élections-2022"><i class="fa fa-check"></i><b>2.3.1</b> Élections 2022</a></li>
-<li class="chapter" data-level="2.3.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#communes"><i class="fa fa-check"></i><b>2.3.2</b> Communes</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#recodage"><i class="fa fa-check"></i><b>2.4</b> Recodage</a></li>
-<li class="chapter" data-level="2.5" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#première-visualisation-des-données"><i class="fa fa-check"></i><b>2.5</b> Première visualisation des données</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#une-carte-par-variable"><i class="fa fa-check"></i><b>2.5.1</b> Une carte par variable</a></li>
-<li class="chapter" data-level="2.5.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#matrice-de-corrélation"><i class="fa fa-check"></i><b>2.5.2</b> Matrice de corrélation</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#réaliser-lacp"><i class="fa fa-check"></i><b>2.6</b> Réaliser l’ACP</a>
-<ul>
-<li class="chapter" data-level="2.6.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#une-acp-non-pondérée"><i class="fa fa-check"></i><b>2.6.1</b> Une ACP non pondérée</a></li>
-<li class="chapter" data-level="2.6.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#pondérer-le-calcul-de-lacp"><i class="fa fa-check"></i><b>2.6.2</b> Pondérer le calcul de l’ACP</a></li>
-</ul></li>
-<li class="chapter" data-level="2.7" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#visualiser-les-résultats"><i class="fa fa-check"></i><b>2.7</b> Visualiser les résultats</a>
-<ul>
-<li class="chapter" data-level="2.7.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#cercles-de-corrélation"><i class="fa fa-check"></i><b>2.7.1</b> Cercles de corrélation</a></li>
-<li class="chapter" data-level="2.7.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#contributions-de-chaque-variables"><i class="fa fa-check"></i><b>2.7.2</b> Contributions de chaque variables</a></li>
-<li class="chapter" data-level="2.7.3" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#valeurs-propres-et-de-la-variance-expliquée"><i class="fa fa-check"></i><b>2.7.3</b> Valeurs propres et % de la variance expliquée</a></li>
-<li class="chapter" data-level="2.7.4" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#carte-de-scores"><i class="fa fa-check"></i><b>2.7.4</b> Carte de scores</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#ajouter-des-variables-supplémentaires"><i class="fa fa-check"></i><b>2.8</b> Ajouter des variables supplémentaires</a>
-<ul>
-<li class="chapter" data-level="2.8.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#importation-des-données-1"><i class="fa fa-check"></i><b>2.8.1</b> Importation des données</a></li>
-<li class="chapter" data-level="2.8.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#acp-avec-les-variables-supplémentaires"><i class="fa fa-check"></i><b>2.8.2</b> ACP avec les variables supplémentaires</a></li>
-</ul></li>
-<li class="chapter" data-level="2.9" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#aller-plus-loin"><i class="fa fa-check"></i><b>2.9</b> Aller plus loin</a></li>
-<li class="chapter" data-level="2.10" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#ressources-utilisées"><i class="fa fa-check"></i><b>2.10</b> Ressources utilisées:</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="classification.html"><a href="classification.html"><i class="fa fa-check"></i><b>3</b> Classification</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="classification.html"><a href="classification.html#objectifs"><i class="fa fa-check"></i><b>3.1</b> Objectifs</a></li>
-<li class="chapter" data-level="3.2" data-path="classification.html"><a href="classification.html#préparation-1"><i class="fa fa-check"></i><b>3.2</b> Préparation</a></li>
-<li class="chapter" data-level="3.3" data-path="classification.html"><a href="classification.html#acp"><i class="fa fa-check"></i><b>3.3</b> ACP</a></li>
-<li class="chapter" data-level="3.4" data-path="classification.html"><a href="classification.html#classification-ascendente-hiérarchique"><i class="fa fa-check"></i><b>3.4</b> Classification ascendente hiérarchique</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="classification.html"><a href="classification.html#calcul-de-la-classification"><i class="fa fa-check"></i><b>3.4.1</b> Calcul de la classification</a></li>
-<li class="chapter" data-level="3.4.2" data-path="classification.html"><a href="classification.html#choix-du-nombre-de-classe"><i class="fa fa-check"></i><b>3.4.2</b> Choix du nombre de classe</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="classification.html"><a href="classification.html#visualisation-des-résultats"><i class="fa fa-check"></i><b>3.5</b> Visualisation des résultats</a>
-<ul>
-<li class="chapter" data-level="3.5.1" data-path="classification.html"><a href="classification.html#extraire-les-groupes"><i class="fa fa-check"></i><b>3.5.1</b> Extraire les groupes</a></li>
-<li class="chapter" data-level="3.5.2" data-path="classification.html"><a href="classification.html#un-graphique-selon-les-groupes"><i class="fa fa-check"></i><b>3.5.2</b> Un graphique selon les groupes</a></li>
-<li class="chapter" data-level="3.5.3" data-path="classification.html"><a href="classification.html#une-carte-des-groupes"><i class="fa fa-check"></i><b>3.5.3</b> Une carte des groupes</a></li>
-<li class="chapter" data-level="3.5.4" data-path="classification.html"><a href="classification.html#un-tableau-de-statistique-pour-chaque-groupes"><i class="fa fa-check"></i><b>3.5.4</b> Un tableau de statistique pour chaque groupes</a></li>
-<li class="chapter" data-level="3.5.5" data-path="classification.html"><a href="classification.html#comparaison-avec-une-autre-variable"><i class="fa fa-check"></i><b>3.5.5</b> Comparaison avec une autre variable</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="classification.html"><a href="classification.html#ressources-utilisées-1"><i class="fa fa-check"></i><b>3.6</b> Ressources utilisées</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Méthodes Quantitatives en Géographie</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Méthodes Quantitatives en Géographie</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction</a></li>
+<li><a class="" href="r%C3%A9gressions.html"><span class="header-section-number">1</span> Régressions</a></li>
+<li><a class="" href="analyse-en-composantes-principales.html"><span class="header-section-number">2</span> Analyse en Composantes Principales</a></li>
+<li><a class="active" href="classification.html"><span class="header-section-number">3</span> Classification</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="classification" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Classification<a href="classification.html#classification" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="objectifs" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Objectifs<a href="classification.html#objectifs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="classification" class="section level1" number="3">
+<h1>
+<span class="header-section-number">Chapitre 3</span> Classification<a class="anchor" aria-label="anchor" href="#classification"><i class="fas fa-link"></i></a>
+</h1>
+<div id="objectifs-1" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Objectifs<a class="anchor" aria-label="anchor" href="#objectifs-1"><i class="fas fa-link"></i></a>
+</h2>
 <p>Ce tp a pour objectif de réaliser une classification ascendante hiérarchique des secteurs statistiques de Bruxelles en utilisant des variables de la structure de la propriété des logements mis en location.</p>
 </div>
-<div id="préparation-1" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Préparation<a href="classification.html#préparation-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="préparation-1" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Préparation<a class="anchor" aria-label="anchor" href="#pr%C3%A9paration-1"><i class="fas fa-link"></i></a>
+</h2>
 <p>De façon maintenant habituelle:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="classification.html#cb155-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Manipulation des données </span></span>
-<span id="cb155-2"><a href="classification.html#cb155-2" tabindex="-1"></a><span class="fu">library</span>(sf) <span class="co"># Manipulation des données spatiales</span></span>
-<span id="cb155-3"><a href="classification.html#cb155-3" tabindex="-1"></a><span class="fu">library</span>(mapsf) <span class="co"># Réalisation de carte</span></span>
-<span id="cb155-4"><a href="classification.html#cb155-4" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># Importation de données Excel</span></span>
-<span id="cb155-5"><a href="classification.html#cb155-5" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co"># Réalisation de tableau </span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># Manipulation des données </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span> <span class="co"># Manipulation des données spatiales</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://riatelab.github.io/mapsf/">mapsf</a></span><span class="op">)</span> <span class="co"># Réalisation de carte</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span> <span class="co"># Importation de données Excel</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span> <span class="co"># Réalisation de tableau </span></span></code></pre></div>
+<pre><code>## 
+## Attachement du package : 'kableExtra'</code></pre>
+<pre><code>## L'objet suivant est masqué depuis 'package:huxtable':
+## 
+##     add_footnote</code></pre>
+<pre><code>## L'objet suivant est masqué depuis 'package:dplyr':
+## 
+##     group_rows</code></pre>
 <p>Et deux packages développés pour réaliser des ACP et visualiser les résultats:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="classification.html#cb156-1" tabindex="-1"></a><span class="fu">library</span>(FactoMineR)</span>
-<span id="cb156-2"><a href="classification.html#cb156-2" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://factominer.free.fr">FactoMineR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.sthda.com/english/rpkgs/factoextra">factoextra</a></span><span class="op">)</span></span></code></pre></div>
 <p>Pour ce TP, on utilisera également le packages JLutils:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="classification.html#cb157-1" tabindex="-1"></a><span class="co">#library(devtools)</span></span>
-<span id="cb157-2"><a href="classification.html#cb157-2" tabindex="-1"></a><span class="co">#devtools::install_github(&quot;larmarange/JLutils&quot;)</span></span>
-<span id="cb157-3"><a href="classification.html#cb157-3" tabindex="-1"></a><span class="fu">library</span>(JLutils)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#library(devtools)</span></span>
+<span><span class="co">#devtools::install_github("larmarange/JLutils")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/larmarange/JLutils">JLutils</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Registered S3 method overwritten by 'GGally':
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<pre><code>## 
+## Attachement du package : 'JLutils'</code></pre>
+<pre><code>## Les objets suivants sont masqués depuis 'package:ggstats':
+## 
+##     ggsurvey, signif_stars</code></pre>
 <p>Pour cette classification, on utiliser des indicateurs construits à partir des données du cadastre (1 janvier 2015) utilisée dans ma thèse (<a href="https://difusion.ulb.ac.be/vufind/Record/ULB-DIPOT:oai:dipot.ulb.ac.be:2013/359086/Holdings" class="uri">https://difusion.ulb.ac.be/vufind/Record/ULB-DIPOT:oai:dipot.ulb.ac.be:2013/359086/Holdings</a>)</p>
 <p>Les variables utilisées sont:</p>
 <ul>
@@ -273,176 +115,215 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>log_sociaux = proportion des logements sociaux parmi les logements loués</p></li>
 <li><p>entrep_sprl_sa = proportion des logements possédés par des entreprises privées parmi les logements loués</p></li>
 </ul>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="classification.html#cb158-1" tabindex="-1"></a>cadastre <span class="ot">&lt;-</span> <span class="fu">read_delim</span>( <span class="st">&quot;data/cadastre_2015_secteurs.csv&quot;</span>, <span class="at">delim=</span><span class="st">&quot;;&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb158-2"><a href="classification.html#cb158-2" tabindex="-1"></a>  <span class="fu">filter</span>(NB_LOGLOUE_TOT<span class="sc">&gt;=</span><span class="dv">200</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cadastre</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span> <span class="st">"data/cadastre_2015_secteurs.csv"</span>, delim<span class="op">=</span><span class="st">";"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">NB_LOGLOUE_TOT</span><span class="op">&gt;=</span><span class="fl">200</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Rows: 724 Columns: 12
-## ── Column specification ─────────────────────────────────────
-## Delimiter: &quot;;&quot;
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ";"
 ## chr  (1): cd_sector
-## dbl (11): NB_LOG, NB_LOGLOUE_TOT, NB_LOCDOM, prop_occup, ...
+## dbl (11): NB_LOG, NB_LOGLOUE_TOT, NB_LOCDOM, prop_occup, prop_LOCDOM, prop_L...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div id="acp" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> ACP<a href="classification.html#acp" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="acp" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> ACP<a class="anchor" aria-label="anchor" href="#acp"><i class="fas fa-link"></i></a>
+</h2>
 <p>Pour réaliser la classification, on va d’abord réaliser une classification. Cela nous permet d’éliminer le bruit.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="classification.html#cb160-1" tabindex="-1"></a>pca<span class="ot">&lt;-</span><span class="fu">PCA</span>(cadastre[,<span class="dv">6</span><span class="sc">:</span><span class="dv">12</span>], <span class="at">row.w =</span>cadastre<span class="sc">$</span>NB_LOGLOUE_TOT,<span class="at">ncp =</span> <span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-90-1.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-90-2.png" width="672" /></p>
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pca</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/FactoMineR/man/PCA.html">PCA</a></span><span class="op">(</span><span class="va">cadastre</span><span class="op">[</span>,<span class="fl">6</span><span class="op">:</span><span class="fl">12</span><span class="op">]</span>, row.w <span class="op">=</span><span class="va">cadastre</span><span class="op">$</span><span class="va">NB_LOGLOUE_TOT</span>,ncp <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<p><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-90-1.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-90-2.png" width="672"></p>
 <p>On se demande combien de composante garder: les 3 premières représentes 80% de la variance.</p>
 <pre><code>fviz_screeplot(pca, ncp=10)
 pca$eig</code></pre>
 <p>On peut joindre les socres des ACP aux données</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="classification.html#cb162-1" tabindex="-1"></a>cadastre<span class="ot">&lt;-</span><span class="fu">bind_cols</span>(cadastre,pca<span class="sc">$</span>ind<span class="sc">$</span>coord)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cadastre</span><span class="op">&lt;-</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">cadastre</span>,<span class="va">pca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="classification-ascendente-hiérarchique" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Classification ascendente hiérarchique<a href="classification.html#classification-ascendente-hiérarchique" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="calcul-de-la-classification" class="section level3 hasAnchor" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Calcul de la classification<a href="classification.html#calcul-de-la-classification" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="classification-ascendente-hiérarchique" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Classification ascendente hiérarchique<a class="anchor" aria-label="anchor" href="#classification-ascendente-hi%C3%A9rarchique"><i class="fas fa-link"></i></a>
+</h2>
+<div id="calcul-de-la-classification" class="section level3" number="3.4.1">
+<h3>
+<span class="header-section-number">3.4.1</span> Calcul de la classification<a class="anchor" aria-label="anchor" href="#calcul-de-la-classification"><i class="fas fa-link"></i></a>
+</h3>
 <p>On extrait les scores des trois premières composantes qu’on va utiliser dans la classification:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="classification.html#cb163-1" tabindex="-1"></a>score<span class="ot">&lt;-</span>pca<span class="sc">$</span>ind<span class="sc">$</span>coord[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">score</span><span class="op">&lt;-</span><span class="va">pca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <p>On calcul une matrice de distance euclidienne:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="classification.html#cb164-1" tabindex="-1"></a>dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(score, <span class="at">method =</span> <span class="st">&quot;euclidean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span><span class="op">(</span><span class="va">score</span>, method <span class="op">=</span> <span class="st">"euclidean"</span><span class="op">)</span></span></code></pre></div>
 <p>On réalise la classification avec la méthode de Ward:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="classification.html#cb165-1" tabindex="-1"></a>hcpc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist, <span class="at">method =</span> <span class="st">&quot;ward.D&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">hcpc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">dist</span>, method <span class="op">=</span> <span class="st">"ward.D"</span> <span class="op">)</span></span></code></pre></div>
 </div>
-<div id="choix-du-nombre-de-classe" class="section level3 hasAnchor" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Choix du nombre de classe<a href="classification.html#choix-du-nombre-de-classe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="choix-du-nombre-de-classe" class="section level3" number="3.4.2">
+<h3>
+<span class="header-section-number">3.4.2</span> Choix du nombre de classe<a class="anchor" aria-label="anchor" href="#choix-du-nombre-de-classe"><i class="fas fa-link"></i></a>
+</h3>
 <p>On peut réaliser le dendogramme :</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="classification.html#cb166-1" tabindex="-1"></a><span class="fu">plot</span>(hcpc, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">hcpc</span>, cex <span class="op">=</span> <span class="fl">0.6</span>, hang <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-95-1.png" width="672"></div>
 <p>Ainsi que le graphique d’inertie:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="classification.html#cb167-1" tabindex="-1"></a>inertie <span class="ot">&lt;-</span> <span class="fu">sort</span>(hcpc<span class="sc">$</span>height, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb167-2"><a href="classification.html#cb167-2" tabindex="-1"></a><span class="fu">plot</span>(inertie[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>], <span class="at">type =</span> <span class="st">&quot;s&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Nombre de classes&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Inertie&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">inertie</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">hcpc</span><span class="op">$</span><span class="va">height</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">inertie</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"s"</span>, xlab <span class="op">=</span> <span class="st">"Nombre de classes"</span>, ylab <span class="op">=</span> <span class="st">"Inertie"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-96-1.png" width="672"></div>
 <p>Il apparaît ici que le gain pour ajouter une classe supplémentaire diminue fortement après la 5ème classe</p>
 <p>On définit donc le paramètre k=5:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="classification.html#cb168-1" tabindex="-1"></a><span class="co">#png(filename = &quot;TP10/dendogramme.png&quot;)</span></span>
-<span id="cb168-2"><a href="classification.html#cb168-2" tabindex="-1"></a><span class="fu">plot</span>(hcpc, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb168-3"><a href="classification.html#cb168-3" tabindex="-1"></a><span class="fu">rect.hclust</span>(hcpc , <span class="at">k =</span> <span class="dv">5</span>, <span class="at">border =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="classification.html#cb169-1" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#png(filename = "TP10/dendogramme.png")</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">hcpc</span>, cex <span class="op">=</span> <span class="fl">0.6</span>, hang <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/rect.hclust.html">rect.hclust</a></span><span class="op">(</span><span class="va">hcpc</span> , k <span class="op">=</span> <span class="fl">5</span>, border <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-97-1.png" width="672"></div>
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#dev.off()</span></span></code></pre></div>
 <p>Il existe une fonction de JLutils qui permet de claculer le nombre de classes “optimale”.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="classification.html#cb170-1" tabindex="-1"></a><span class="fu">best.cutree</span>(hcpc)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/JLutils/man/best.cutree.html">best.cutree</a></span><span class="op">(</span><span class="va">hcpc</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 </div>
 </div>
-<div id="visualisation-des-résultats" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> Visualisation des résultats<a href="classification.html#visualisation-des-résultats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="extraire-les-groupes" class="section level3 hasAnchor" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> Extraire les groupes<a href="classification.html#extraire-les-groupes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="visualisation-des-résultats" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> Visualisation des résultats<a class="anchor" aria-label="anchor" href="#visualisation-des-r%C3%A9sultats"><i class="fas fa-link"></i></a>
+</h2>
+<div id="extraire-les-groupes" class="section level3" number="3.5.1">
+<h3>
+<span class="header-section-number">3.5.1</span> Extraire les groupes<a class="anchor" aria-label="anchor" href="#extraire-les-groupes"><i class="fas fa-link"></i></a>
+</h3>
 <p>On peut alors associer chaque individus (ici les secteurs statistiques) à chaque un groupe:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="classification.html#cb172-1" tabindex="-1"></a>hcpc_indiv <span class="ot">&lt;-</span> <span class="fu">cutree</span>(hcpc, <span class="at">k =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">hcpc_indiv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cutree.html">cutree</a></span><span class="op">(</span><span class="va">hcpc</span>, k <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <p>On peut alors rapatrier les résultats sur les données de bases:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="classification.html#cb173-1" tabindex="-1"></a>cadastre<span class="ot">&lt;-</span>cadastre <span class="sc">%&gt;%</span></span>
-<span id="cb173-2"><a href="classification.html#cb173-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clust=</span> <span class="fu">as.factor</span>(hcpc_indiv))</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cadastre</span><span class="op">&lt;-</span><span class="va">cadastre</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>clust<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">hcpc_indiv</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="un-graphique-selon-les-groupes" class="section level3 hasAnchor" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> Un graphique selon les groupes<a href="classification.html#un-graphique-selon-les-groupes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="un-graphique-selon-les-groupes" class="section level3" number="3.5.2">
+<h3>
+<span class="header-section-number">3.5.2</span> Un graphique selon les groupes<a class="anchor" aria-label="anchor" href="#un-graphique-selon-les-groupes"><i class="fas fa-link"></i></a>
+</h3>
 <p>On peut réaliser un graphique où on place chaque individus (ici les secteurs statistiques) sur les deux dimensions construites lors de l’ACP et on colorie les points selon la classe:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="classification.html#cb174-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>cadastre,</span>
-<span id="cb174-2"><a href="classification.html#cb174-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Dim<span class="fl">.1</span>, <span class="at">y=</span>Dim<span class="fl">.2</span>, <span class="at">color=</span>clust)) <span class="sc">+</span></span>
-<span id="cb174-3"><a href="classification.html#cb174-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb174-4"><a href="classification.html#cb174-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">cadastre</span>,</span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Dim.1</span>, y<span class="op">=</span><span class="va">Dim.2</span>, color<span class="op">=</span><span class="va">clust</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-101-1.png" width="672"></div>
 </div>
-<div id="une-carte-des-groupes" class="section level3 hasAnchor" number="3.5.3">
-<h3><span class="header-section-number">3.5.3</span> Une carte des groupes<a href="classification.html#une-carte-des-groupes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="une-carte-des-groupes" class="section level3" number="3.5.3">
+<h3>
+<span class="header-section-number">3.5.3</span> Une carte des groupes<a class="anchor" aria-label="anchor" href="#une-carte-des-groupes"><i class="fas fa-link"></i></a>
+</h3>
 <p>On importe les secteurs statistiques et garde que les secteurs bruxellois:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="classification.html#cb175-1" tabindex="-1"></a>secteurs_stats<span class="ot">&lt;-</span> <span class="fu">st_read</span> (<span class="st">&quot;data/sh_statbel_statistical_sectors_31370_20230101.gpkg&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb175-2"><a href="classification.html#cb175-2" tabindex="-1"></a>  <span class="fu">filter</span>(tx_rgn_descr_fr<span class="sc">==</span><span class="st">&quot;Région de Bruxelles-Capitale&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `secteurs_stats2023&#39; from data source 
-##   `C:\Users\hugop\Nextcloud\git\manuel_geo_quanti\data\sh_statbel_statistical_sectors_31370_20230101.gpkg&#39; 
-##   using driver `GPKG&#39;
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">secteurs_stats</span><span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">st_read</a></span> <span class="op">(</span><span class="st">"data/sh_statbel_statistical_sectors_31370_20230101.gpkg"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">tx_rgn_descr_fr</span><span class="op">==</span><span class="st">"Région de Bruxelles-Capitale"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Reading layer `secteurs_stats2023' from data source 
+##   `C:\Users\hugop\Nextcloud\git\manuel_geo_quanti\data\sh_statbel_statistical_sectors_31370_20230101.gpkg' 
+##   using driver `GPKG'
 ## Simple feature collection with 19795 features and 31 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: 21991.63 ymin: 21162.16 xmax: 295167.1 ymax: 244027.2
 ## Projected CRS: BD72 / Belgian Lambert 72</code></pre>
 <p>On construit un objet spatial communes pour la cartographie:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="classification.html#cb177-1" tabindex="-1"></a>communes<span class="ot">&lt;-</span>secteurs_stats <span class="sc">%&gt;%</span></span>
-<span id="cb177-2"><a href="classification.html#cb177-2" tabindex="-1"></a>  <span class="fu">group_by</span>(tx_munty_descr_fr) <span class="sc">%&gt;%</span></span>
-<span id="cb177-3"><a href="classification.html#cb177-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">geom=</span><span class="fu">st_union</span>(geom))</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes</span><span class="op">&lt;-</span><span class="va">secteurs_stats</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">tx_munty_descr_fr</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>geom<span class="op">=</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html">st_union</a></span><span class="op">(</span><span class="va">geom</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>On joint les groupes aux secteurs statistiques:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="classification.html#cb178-1" tabindex="-1"></a>secteurs_stats_cad<span class="ot">&lt;-</span> secteurs_stats  <span class="sc">%&gt;%</span></span>
-<span id="cb178-2"><a href="classification.html#cb178-2" tabindex="-1"></a>  <span class="fu">left_join</span>(cadastre, <span class="at">by=</span><span class="st">&quot;cd_sector&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">secteurs_stats_cad</span><span class="op">&lt;-</span> <span class="va">secteurs_stats</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">cadastre</span>, by<span class="op">=</span><span class="st">"cd_sector"</span><span class="op">)</span></span></code></pre></div>
 <p>On réalise la carte:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="classification.html#cb179-1" tabindex="-1"></a><span class="co"># On peut aussi définir une palette de couleur pour facilité la lecture</span></span>
-<span id="cb179-2"><a href="classification.html#cb179-2" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>)</span>
-<span id="cb179-3"><a href="classification.html#cb179-3" tabindex="-1"></a></span>
-<span id="cb179-4"><a href="classification.html#cb179-4" tabindex="-1"></a><span class="co"># mf_export(x = secteurs_stats_cad ,</span></span>
-<span id="cb179-5"><a href="classification.html#cb179-5" tabindex="-1"></a><span class="co">#           filename =paste0(&quot;TP10_typo/carte_typo.png&quot; ),</span></span>
-<span id="cb179-6"><a href="classification.html#cb179-6" tabindex="-1"></a><span class="co">#           width = 900)</span></span>
-<span id="cb179-7"><a href="classification.html#cb179-7" tabindex="-1"></a><span class="fu">mf_map</span>(<span class="at">x =</span> secteurs_stats, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;gray25&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.3</span>)</span>
-<span id="cb179-8"><a href="classification.html#cb179-8" tabindex="-1"></a><span class="fu">mf_map</span>(secteurs_stats_cad ,</span>
-<span id="cb179-9"><a href="classification.html#cb179-9" tabindex="-1"></a>       <span class="at">var=</span> <span class="fu">c</span>(<span class="st">&quot;NB_LOGLOUE_TOT&quot;</span>,<span class="st">&quot;clust&quot;</span>),</span>
-<span id="cb179-10"><a href="classification.html#cb179-10" tabindex="-1"></a>       <span class="at">type=</span><span class="st">&quot;prop_typo&quot;</span>,</span>
-<span id="cb179-11"><a href="classification.html#cb179-11" tabindex="-1"></a>       <span class="at">inches =</span> <span class="fl">0.08</span>,</span>
-<span id="cb179-12"><a href="classification.html#cb179-12" tabindex="-1"></a>       <span class="at">pal=</span> pal,</span>
-<span id="cb179-13"><a href="classification.html#cb179-13" tabindex="-1"></a>       <span class="at">lwd=</span><span class="fl">0.3</span>,</span>
-<span id="cb179-14"><a href="classification.html#cb179-14" tabindex="-1"></a>       <span class="at">add=</span>T)</span></code></pre></div>
-<pre><code>## 225 &#39;NA&#39; values are not plotted on the map.</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="classification.html#cb181-1" tabindex="-1"></a><span class="fu">mf_map</span>(<span class="at">x =</span> communes, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;gray25&quot;</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">add=</span>T)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="classification.html#cb182-1" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># On peut aussi définir une palette de couleur pour facilité la lecture</span></span>
+<span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"green"</span>, <span class="st">"orange"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># mf_export(x = secteurs_stats_cad ,</span></span>
+<span><span class="co">#           filename =paste0("TP10_typo/carte_typo.png" ),</span></span>
+<span><span class="co">#           width = 900)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">secteurs_stats</span>, col <span class="op">=</span> <span class="cn">NA</span>, border <span class="op">=</span> <span class="st">"gray25"</span>, lwd <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">secteurs_stats_cad</span> ,</span>
+<span>       var<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"NB_LOGLOUE_TOT"</span>,<span class="st">"clust"</span><span class="op">)</span>,</span>
+<span>       type<span class="op">=</span><span class="st">"prop_typo"</span>,</span>
+<span>       inches <span class="op">=</span> <span class="fl">0.08</span>,</span>
+<span>       pal<span class="op">=</span> <span class="va">pal</span>,</span>
+<span>       lwd<span class="op">=</span><span class="fl">0.3</span>,</span>
+<span>       add<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 225 'NA' values are not plotted on the map.</code></pre>
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">communes</span>, col <span class="op">=</span> <span class="cn">NA</span>, border <span class="op">=</span> <span class="st">"gray25"</span>, lwd <span class="op">=</span> <span class="fl">1</span>, add<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-105-1.png" width="672"></div>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#dev.off()</span></span></code></pre></div>
 </div>
-<div id="un-tableau-de-statistique-pour-chaque-groupes" class="section level3 hasAnchor" number="3.5.4">
-<h3><span class="header-section-number">3.5.4</span> Un tableau de statistique pour chaque groupes<a href="classification.html#un-tableau-de-statistique-pour-chaque-groupes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="un-tableau-de-statistique-pour-chaque-groupes" class="section level3" number="3.5.4">
+<h3>
+<span class="header-section-number">3.5.4</span> Un tableau de statistique pour chaque groupes<a class="anchor" aria-label="anchor" href="#un-tableau-de-statistique-pour-chaque-groupes"><i class="fas fa-link"></i></a>
+</h3>
 <p>On réalise des statistiques (ici moyenne pondérée par le nombre de logements loués) par groupes:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="classification.html#cb183-1" tabindex="-1"></a>tab<span class="ot">&lt;-</span>cadastre <span class="sc">%&gt;%</span></span>
-<span id="cb183-2"><a href="classification.html#cb183-2" tabindex="-1"></a>  <span class="fu">group_by</span>(clust) <span class="sc">%&gt;%</span></span>
-<span id="cb183-3"><a href="classification.html#cb183-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb183-4"><a href="classification.html#cb183-4" tabindex="-1"></a>    <span class="at">log_sociaux=</span> <span class="fu">weighted.mean</span>(log_sociaux,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-5"><a href="classification.html#cb183-5" tabindex="-1"></a>    <span class="at">entrep_sprl_sa=</span> <span class="fu">weighted.mean</span>(entrep_sprl_sa,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-6"><a href="classification.html#cb183-6" tabindex="-1"></a>    <span class="at">prop_LOCDOM=</span> <span class="fu">weighted.mean</span>(prop_LOCDOM,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-7"><a href="classification.html#cb183-7" tabindex="-1"></a>    <span class="at">prop_LOC_HBX  =</span> <span class="fu">weighted.mean</span>(prop_LOC_HBX,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-8"><a href="classification.html#cb183-8" tabindex="-1"></a>    <span class="at">dist_200 =</span> <span class="fu">weighted.mean</span>(dist_200,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-9"><a href="classification.html#cb183-9" tabindex="-1"></a>    <span class="at">cinq_plus=</span> <span class="fu">weighted.mean</span>(cinq_plus,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-10"><a href="classification.html#cb183-10" tabindex="-1"></a>    <span class="at">vingt_plus=</span> <span class="fu">weighted.mean</span>(vingt_plus,NB_LOGLOUE_TOT ) )</span>
-<span id="cb183-11"><a href="classification.html#cb183-11" tabindex="-1"></a></span>
-<span id="cb183-12"><a href="classification.html#cb183-12" tabindex="-1"></a></span>
-<span id="cb183-13"><a href="classification.html#cb183-13" tabindex="-1"></a><span class="co"># On ajoute une ligne pour la moyenne:</span></span>
-<span id="cb183-14"><a href="classification.html#cb183-14" tabindex="-1"></a></span>
-<span id="cb183-15"><a href="classification.html#cb183-15" tabindex="-1"></a>moyenne_total<span class="ot">&lt;-</span>cadastre <span class="sc">%&gt;%</span></span>
-<span id="cb183-16"><a href="classification.html#cb183-16" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb183-17"><a href="classification.html#cb183-17" tabindex="-1"></a>    <span class="at">log_sociaux=</span> <span class="fu">weighted.mean</span>(log_sociaux,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-18"><a href="classification.html#cb183-18" tabindex="-1"></a>    <span class="at">entrep_sprl_sa=</span> <span class="fu">weighted.mean</span>(entrep_sprl_sa,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-19"><a href="classification.html#cb183-19" tabindex="-1"></a>    <span class="at">prop_LOCDOM=</span> <span class="fu">weighted.mean</span>(prop_LOCDOM,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-20"><a href="classification.html#cb183-20" tabindex="-1"></a>    <span class="at">prop_LOC_HBX  =</span> <span class="fu">weighted.mean</span>(prop_LOC_HBX,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-21"><a href="classification.html#cb183-21" tabindex="-1"></a>    <span class="at">dist_200 =</span> <span class="fu">weighted.mean</span>(dist_200,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-22"><a href="classification.html#cb183-22" tabindex="-1"></a>    <span class="at">cinq_plus=</span> <span class="fu">weighted.mean</span>(cinq_plus,NB_LOGLOUE_TOT ),</span>
-<span id="cb183-23"><a href="classification.html#cb183-23" tabindex="-1"></a>    <span class="at">vingt_plus=</span> <span class="fu">weighted.mean</span>(vingt_plus,NB_LOGLOUE_TOT ) )</span>
-<span id="cb183-24"><a href="classification.html#cb183-24" tabindex="-1"></a></span>
-<span id="cb183-25"><a href="classification.html#cb183-25" tabindex="-1"></a><span class="co"># On place le résultat dans la ligne donc le numéro est équivalent au nombre de ligne dans le tableau plus une (nrow()+1) pour les colonnes de 2 à 8:</span></span>
-<span id="cb183-26"><a href="classification.html#cb183-26" tabindex="-1"></a>tab[<span class="fu">nrow</span>(tab)<span class="sc">+</span><span class="dv">1</span> ,  <span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>]<span class="ot">&lt;-</span>moyenne_total</span>
-<span id="cb183-27"><a href="classification.html#cb183-27" tabindex="-1"></a></span>
-<span id="cb183-28"><a href="classification.html#cb183-28" tabindex="-1"></a><span class="co">#On multiplie toutes les cellules par 100 et on arrondi avec un 1 chiffre après la virgule:</span></span>
-<span id="cb183-29"><a href="classification.html#cb183-29" tabindex="-1"></a>tab[,<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>]<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>tab[,<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>],<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tab</span><span class="op">&lt;-</span><span class="va">cadastre</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">clust</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    log_sociaux<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">log_sociaux</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    entrep_sprl_sa<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">entrep_sprl_sa</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    prop_LOCDOM<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">prop_LOCDOM</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    prop_LOC_HBX  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">prop_LOC_HBX</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    dist_200 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">dist_200</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    cinq_plus<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">cinq_plus</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    vingt_plus<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">vingt_plus</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span> <span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># On ajoute une ligne pour la moyenne:</span></span>
+<span></span>
+<span><span class="va">moyenne_total</span><span class="op">&lt;-</span><span class="va">cadastre</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    log_sociaux<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">log_sociaux</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    entrep_sprl_sa<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">entrep_sprl_sa</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    prop_LOCDOM<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">prop_LOCDOM</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    prop_LOC_HBX  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">prop_LOC_HBX</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    dist_200 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">dist_200</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    cinq_plus<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">cinq_plus</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span>,</span>
+<span>    vingt_plus<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">vingt_plus</span>,<span class="va">NB_LOGLOUE_TOT</span> <span class="op">)</span> <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># On place le résultat dans la ligne donc le numéro est équivalent au nombre de ligne dans le tableau plus une (nrow()+1) pour les colonnes de 2 à 8:</span></span>
+<span><span class="va">tab</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span> ,  <span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">&lt;-</span><span class="va">moyenne_total</span></span>
+<span></span>
+<span><span class="co">#On multiplie toutes les cellules par 100 et on arrondi avec un 1 chiffre après la virgule:</span></span>
+<span><span class="va">tab</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="va">tab</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span>,<span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>On peut alors donner des noms aux groupes</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="classification.html#cb184-1" tabindex="-1"></a>tab<span class="sc">$</span>clust<span class="ot">&lt;-</span><span class="fu">as.character</span>(tab<span class="sc">$</span>clust)</span>
-<span id="cb184-2"><a href="classification.html#cb184-2" tabindex="-1"></a>tab<span class="ot">&lt;-</span> tab <span class="sc">%&gt;%</span></span>
-<span id="cb184-3"><a href="classification.html#cb184-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clust=</span><span class="fu">case_when</span> (</span>
-<span id="cb184-4"><a href="classification.html#cb184-4" tabindex="-1"></a>                   clust <span class="sc">==</span><span class="dv">1</span><span class="sc">~</span><span class="st">&quot;1. Propriétaires à proximité&quot;</span>,</span>
-<span id="cb184-5"><a href="classification.html#cb184-5" tabindex="-1"></a>                   clust <span class="sc">==</span><span class="dv">2</span><span class="sc">~</span><span class="st">&quot;2. Grands propriétaires et entreprises&quot;</span>,</span>
-<span id="cb184-6"><a href="classification.html#cb184-6" tabindex="-1"></a>                   clust <span class="sc">==</span><span class="dv">3</span><span class="sc">~</span><span class="st">&quot;3. Type moyen&quot;</span>,</span>
-<span id="cb184-7"><a href="classification.html#cb184-7" tabindex="-1"></a>                   clust <span class="sc">==</span><span class="dv">4</span><span class="sc">~</span><span class="st">&quot;4. Propriétaires non-Bruxellois&quot;</span>,</span>
-<span id="cb184-8"><a href="classification.html#cb184-8" tabindex="-1"></a>                   clust <span class="sc">==</span><span class="dv">5</span><span class="sc">~</span><span class="st">&quot;5. Logements sociaux&quot;</span>,</span>
-<span id="cb184-9"><a href="classification.html#cb184-9" tabindex="-1"></a>                   <span class="fu">is.na</span>(clust)<span class="sc">~</span><span class="st">&quot;Moyenne&quot;</span>))</span>
-<span id="cb184-10"><a href="classification.html#cb184-10" tabindex="-1"></a></span>
-<span id="cb184-11"><a href="classification.html#cb184-11" tabindex="-1"></a><span class="fu">kable</span>(tab)</span></code></pre></div>
-<table style="width:100%;">
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tab</span><span class="op">$</span><span class="va">clust</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">tab</span><span class="op">$</span><span class="va">clust</span><span class="op">)</span></span>
+<span><span class="va">tab</span><span class="op">&lt;-</span> <span class="va">tab</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>clust<span class="op">=</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span> <span class="op">(</span></span>
+<span>                   <span class="va">clust</span> <span class="op">==</span><span class="fl">1</span><span class="op">~</span><span class="st">"1. Propriétaires à proximité"</span>,</span>
+<span>                   <span class="va">clust</span> <span class="op">==</span><span class="fl">2</span><span class="op">~</span><span class="st">"2. Grands propriétaires et entreprises"</span>,</span>
+<span>                   <span class="va">clust</span> <span class="op">==</span><span class="fl">3</span><span class="op">~</span><span class="st">"3. Type moyen"</span>,</span>
+<span>                   <span class="va">clust</span> <span class="op">==</span><span class="fl">4</span><span class="op">~</span><span class="st">"4. Propriétaires non-Bruxellois"</span>,</span>
+<span>                   <span class="va">clust</span> <span class="op">==</span><span class="fl">5</span><span class="op">~</span><span class="st">"5. Logements sociaux"</span>,</span>
+<span>                   <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">clust</span><span class="op">)</span><span class="op">~</span><span class="st">"Moyenne"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
 <colgroup>
-<col width="32%" />
-<col width="9%" />
-<col width="12%" />
-<col width="9%" />
-<col width="10%" />
-<col width="7%" />
-<col width="8%" />
-<col width="9%" />
+<col width="32%">
+<col width="9%">
+<col width="12%">
+<col width="9%">
+<col width="10%">
+<col width="7%">
+<col width="8%">
+<col width="9%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th align="left">clust</th>
 <th align="right">log_sociaux</th>
 <th align="right">entrep_sprl_sa</th>
@@ -451,8 +332,7 @@ pca$eig</code></pre>
 <th align="right">dist_200</th>
 <th align="right">cinq_plus</th>
 <th align="right">vingt_plus</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">1. Propriétaires à proximité</td>
@@ -515,124 +395,121 @@ pca$eig</code></pre>
 <td align="right">7.1</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Le package JLutils permet également de colorer le dendogramme:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="classification.html#cb185-1" tabindex="-1"></a><span class="co"># library(JLutils)</span></span>
-<span id="cb185-2"><a href="classification.html#cb185-2" tabindex="-1"></a><span class="fu">A2Rplot</span>(hcpc, <span class="at">k =</span><span class="dv">5</span>, <span class="at">boxes =</span> T, <span class="at">show.labels =</span> F,<span class="at">col.up =</span> <span class="st">&quot;gray50&quot;</span>,</span>
-<span id="cb185-3"><a href="classification.html#cb185-3" tabindex="-1"></a>        <span class="at">col.down =</span> pal, <span class="at">main=</span><span class="st">&quot;Dendrogramme - 5 classes&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># library(JLutils)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/JLutils/man/A2Rplot.html">A2Rplot</a></span><span class="op">(</span><span class="va">hcpc</span>, k <span class="op">=</span><span class="fl">5</span>, boxes <span class="op">=</span> <span class="cn">T</span>, show.labels <span class="op">=</span> <span class="cn">F</span>,col.up <span class="op">=</span> <span class="st">"gray50"</span>,</span>
+<span>        col.down <span class="op">=</span> <span class="va">pal</span>, main<span class="op">=</span><span class="st">"Dendrogramme - 5 classes"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-108-1.png" width="672"></div>
 </div>
-<div id="comparaison-avec-une-autre-variable" class="section level3 hasAnchor" number="3.5.5">
-<h3><span class="header-section-number">3.5.5</span> Comparaison avec une autre variable<a href="classification.html#comparaison-avec-une-autre-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="comparaison-avec-une-autre-variable" class="section level3" number="3.5.5">
+<h3>
+<span class="header-section-number">3.5.5</span> Comparaison avec une autre variable<a class="anchor" aria-label="anchor" href="#comparaison-avec-une-autre-variable"><i class="fas fa-link"></i></a>
+</h3>
 <p>On importe l’indice synthétique de difficulté:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="classification.html#cb186-1" tabindex="-1"></a>ind_synth <span class="ot">&lt;-</span><span class="fu">read_delim</span>(<span class="st">&quot;data/indice_synthetique.csv&quot;</span>, <span class="at">delim=</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ind_synth</span> <span class="op">&lt;-</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span><span class="st">"data/indice_synthetique.csv"</span>, delim<span class="op">=</span><span class="st">";"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Rows: 7752 Columns: 2
-## ── Column specification ─────────────────────────────────────
-## Delimiter: &quot;;&quot;
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ";"
 ## chr (1): Secteur statistique
 ## dbl (1): Indice synthétique de difficulté 2010
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="classification.html#cb188-1" tabindex="-1"></a>indice_sec<span class="ot">&lt;-</span>secteurs_stats <span class="sc">%&gt;%</span></span>
-<span id="cb188-2"><a href="classification.html#cb188-2" tabindex="-1"></a>  <span class="fu">left_join</span>(ind_synth, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;cd_sector&quot;</span><span class="ot">=</span><span class="st">&quot;Secteur statistique&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb188-3"><a href="classification.html#cb188-3" tabindex="-1"></a>  <span class="fu">filter</span>(tx_rgn_descr_fr<span class="sc">==</span><span class="st">&quot;Région de Bruxelles-Capitale&quot;</span>)</span>
-<span id="cb188-4"><a href="classification.html#cb188-4" tabindex="-1"></a></span>
-<span id="cb188-5"><a href="classification.html#cb188-5" tabindex="-1"></a><span class="fu">mf_map</span>(indice_sec, </span>
-<span id="cb188-6"><a href="classification.html#cb188-6" tabindex="-1"></a>       <span class="at">var=</span><span class="st">&quot;Indice synthétique de difficulté 2010&quot;</span>, </span>
-<span id="cb188-7"><a href="classification.html#cb188-7" tabindex="-1"></a>       <span class="at">type=</span><span class="st">&quot;choro&quot;</span>, </span>
-<span id="cb188-8"><a href="classification.html#cb188-8" tabindex="-1"></a>       <span class="at">pal=</span> <span class="st">&quot;Viridis&quot;</span>, </span>
-<span id="cb188-9"><a href="classification.html#cb188-9" tabindex="-1"></a>       <span class="at">nbreaks=</span><span class="dv">5</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">indice_sec</span><span class="op">&lt;-</span><span class="va">secteurs_stats</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">ind_synth</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cd_sector"</span><span class="op">=</span><span class="st">"Secteur statistique"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">tx_rgn_descr_fr</span><span class="op">==</span><span class="st">"Région de Bruxelles-Capitale"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">indice_sec</span>, </span>
+<span>       var<span class="op">=</span><span class="st">"Indice synthétique de difficulté 2010"</span>, </span>
+<span>       type<span class="op">=</span><span class="st">"choro"</span>, </span>
+<span>       pal<span class="op">=</span> <span class="st">"Viridis"</span>, </span>
+<span>       nbreaks<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-110-1.png" width="672"></div>
 <p>On joint l’indice synthétique de difficulté avec les données sur base du secteur statistique:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="classification.html#cb189-1" tabindex="-1"></a>cadastre<span class="ot">&lt;-</span> cadastre <span class="sc">%&gt;%</span></span>
-<span id="cb189-2"><a href="classification.html#cb189-2" tabindex="-1"></a>  <span class="fu">left_join</span>(ind_synth,<span class="at">by=</span> <span class="fu">c</span>(<span class="st">&quot;cd_sector&quot;</span><span class="ot">=</span> <span class="st">&quot;Secteur statistique&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cadastre</span><span class="op">&lt;-</span> <span class="va">cadastre</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">ind_synth</span>,by<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cd_sector"</span><span class="op">=</span> <span class="st">"Secteur statistique"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>On réalise un graphique avec des boxplot:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="classification.html#cb190-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>cadastre,<span class="fu">aes</span>(<span class="at">x=</span>clust,</span>
-<span id="cb190-2"><a href="classification.html#cb190-2" tabindex="-1"></a>                           <span class="at">y=</span><span class="st">`</span><span class="at">Indice synthétique de difficulté 2010</span><span class="st">`</span>,</span>
-<span id="cb190-3"><a href="classification.html#cb190-3" tabindex="-1"></a>                           <span class="at">weight=</span>NB_LOGLOUE_TOT,</span>
-<span id="cb190-4"><a href="classification.html#cb190-4" tabindex="-1"></a>                           <span class="at">fill=</span>clust)) <span class="sc">+</span></span>
-<span id="cb190-5"><a href="classification.html#cb190-5" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="at">fill=</span>pal) <span class="sc">+</span></span>
-<span id="cb190-6"><a href="classification.html#cb190-6" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span><span class="st">&quot;Relation classification et indice synthétique de difficulté&quot;</span>,</span>
-<span id="cb190-7"><a href="classification.html#cb190-7" tabindex="-1"></a>       <span class="at">x=</span> <span class="st">&quot; &quot;</span>,</span>
-<span id="cb190-8"><a href="classification.html#cb190-8" tabindex="-1"></a>       <span class="at">y=</span> <span class="st">&quot;Indice synth. de diff. 2010&quot;</span>)<span class="sc">+</span></span>
-<span id="cb190-9"><a href="classification.html#cb190-9" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">cadastre</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">clust</span>,</span>
+<span>                           y<span class="op">=</span><span class="va">`Indice synthétique de difficulté 2010`</span>,</span>
+<span>                           weight<span class="op">=</span><span class="va">NB_LOGLOUE_TOT</span>,</span>
+<span>                           fill<span class="op">=</span><span class="va">clust</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">pal</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span><span class="st">"Relation classification et indice synthétique de difficulté"</span>,</span>
+<span>       x<span class="op">=</span> <span class="st">" "</span>,</span>
+<span>       y<span class="op">=</span> <span class="st">"Indice synth. de diff. 2010"</span><span class="op">)</span><span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-112-1.png" width="672"></div>
 <p>On peut en conclure qu’il y a un lien entre la division sociale de l’espace et la structure de la propriété des logements loués. Les secteurs du groupe 1 sont plus en difficulté que les autres secteurs, surtout les 3 et 4. Le secteurs centraux (2) ont des indices intermédiaires et certains secteurs de logements sociaux (5) sont très mixtes d’où leur forte dispersion.</p>
 </div>
 </div>
-<div id="ressources-utilisées-1" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> Ressources utilisées<a href="classification.html#ressources-utilisées-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ressources-utilisées-1" class="section level2" number="3.6">
+<h2>
+<span class="header-section-number">3.6</span> Ressources utilisées<a class="anchor" aria-label="anchor" href="#ressources-utilis%C3%A9es-1"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li><p><a href="https://larmarange.github.io/analyse-R/classification-ascendante-hierarchique.html" class="uri">https://larmarange.github.io/analyse-R/classification-ascendante-hierarchique.html</a></p></li>
 <li><p><a href="http://factominer.free.fr/factomethods/classification-hierarchique-sur-composantes-principales.html" class="uri">http://factominer.free.fr/factomethods/classification-hierarchique-sur-composantes-principales.html</a></p></li>
 <li><p><a href="http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/117-hcpc-hierarchical-clustering-on-principal-components-essentials/" class="uri">http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/117-hcpc-hierarchical-clustering-on-principal-components-essentials/</a></p></li>
 </ul>
-
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="analyse-en-composantes-principales.html"><span class="header-section-number">2</span> Analyse en Composantes Principales</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#classification"><span class="header-section-number">3</span> Classification</a></li>
+<li><a class="nav-link" href="#objectifs-1"><span class="header-section-number">3.1</span> Objectifs</a></li>
+<li><a class="nav-link" href="#pr%C3%A9paration-1"><span class="header-section-number">3.2</span> Préparation</a></li>
+<li><a class="nav-link" href="#acp"><span class="header-section-number">3.3</span> ACP</a></li>
+<li>
+<a class="nav-link" href="#classification-ascendente-hi%C3%A9rarchique"><span class="header-section-number">3.4</span> Classification ascendente hiérarchique</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#calcul-de-la-classification"><span class="header-section-number">3.4.1</span> Calcul de la classification</a></li>
+<li><a class="nav-link" href="#choix-du-nombre-de-classe"><span class="header-section-number">3.4.2</span> Choix du nombre de classe</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#visualisation-des-r%C3%A9sultats"><span class="header-section-number">3.5</span> Visualisation des résultats</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#extraire-les-groupes"><span class="header-section-number">3.5.1</span> Extraire les groupes</a></li>
+<li><a class="nav-link" href="#un-graphique-selon-les-groupes"><span class="header-section-number">3.5.2</span> Un graphique selon les groupes</a></li>
+<li><a class="nav-link" href="#une-carte-des-groupes"><span class="header-section-number">3.5.3</span> Une carte des groupes</a></li>
+<li><a class="nav-link" href="#un-tableau-de-statistique-pour-chaque-groupes"><span class="header-section-number">3.5.4</span> Un tableau de statistique pour chaque groupes</a></li>
+<li><a class="nav-link" href="#comparaison-avec-une-autre-variable"><span class="header-section-number">3.5.5</span> Comparaison avec une autre variable</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#ressources-utilis%C3%A9es-1"><span class="header-section-number">3.6</span> Ressources utilisées</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="analyse-en-composantes-principales.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
 
-    </div>
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Méthodes Quantitatives en Géographie</strong>" was written by Hugo Périlleux. It was last built on 2024-10-18.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-typo.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -644,7 +521,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

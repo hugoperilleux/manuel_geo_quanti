@@ -1,9 +1,9 @@
 # Analyse en Composantes Principales
-## Objectif:
+## Objectifs
 
 L'objectif de ce TP est de réaliser une analyse en composante principale sur base de données électorales.
 
-## Données:
+## Données
 
 -   données des élections présidentielles 2022 par communes : pres2022comm.csv (<https://unehistoireduconflitpolitique.fr/telecharger.html>)
 
@@ -57,9 +57,9 @@ Les objectifs pour réaliser une ACP sont généralement :
 
 Dans le cas ici, on va plutôt réaliser une ACP suivant le premier objectif sur les votes exprimés aux élections en Île de France aux élections présidentielles de 2022. L'objectif sera de voir on retrouve des structures dans la géographie de cette élection.
 
-## Importation des données
+### Importation des données
 
-### Élections 2022
+#### Élections 2022
 
 Importation des données:
 
@@ -80,7 +80,7 @@ data<-data %>%
   select(-c(20:30))
 ```
 
-### Communes
+#### Communes
 
 ```{r}
 communes<- st_read("data/France/communes_arrond_ile_de_france.gpkg") %>%
@@ -123,7 +123,7 @@ departements_Paris<-communes %>%
 rm(communes_table)
 ```
 
-## Recodage
+### Recodage
 
 Pour réaliser l'ACP il faut d'abord recoder les variables. On utilise généralement des variables en proportion:
 
@@ -557,7 +557,7 @@ On peut vouloir réaliser des légères rotations des axes pour améliorer la le
 <https://sites.google.com/site/rgraphiques/4--stat/machine-learning-biostatistiques-analyse-de-donn%C3%A9es/analyse-en-composantes-principales/la-rotation-varimax>
 
 
-## Ressources utilisées:
+## Ressources utilisées
 
 -   <http://www.sthda.com/english/wiki/wiki.php?id_contents=7851>
 

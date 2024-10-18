@@ -21,7 +21,7 @@ les-cantons
 lindice-synthétique-de-difficulté
 régression
 analyse-en-composantes-principales
-objectif
+objectifs
 données
 importation-des-données
 élections-2022
@@ -46,7 +46,7 @@ acp-avec-les-variables-supplémentaires
 aller-plus-loin
 ressources-utilisées
 classification
-objectifs
+objectifs-1
 préparation-1
 acp
 classification-ascendente-hiérarchique

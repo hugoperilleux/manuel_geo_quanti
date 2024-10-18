@@ -1,249 +1,72 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Analyse en Composantes Principales | Méthodes Quantitatives en Géographie</title>
-  <meta name="description" content="Ce manuel est le matériel des travaux pratiques pour le cours GEOG-F-404 Méthode quantitative en géographie à l’Université Libre de Bruxelles." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 2 Analyse en Composantes Principales | Méthodes Quantitatives en Géographie" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="Ce manuel est le matériel des travaux pratiques pour le cours GEOG-F-404 Méthode quantitative en géographie à l’Université Libre de Bruxelles." />
-  <meta name="github-repo" content="hugoperilleux/manuel_geo_quanti" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Analyse en Composantes Principales | Méthodes Quantitatives en Géographie" />
-  
-  <meta name="twitter:description" content="Ce manuel est le matériel des travaux pratiques pour le cours GEOG-F-404 Méthode quantitative en géographie à l’Université Libre de Bruxelles." />
-  
-
-<meta name="author" content="Hugo Périlleux" />
-
-
-<meta name="date" content="2024-10-18" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="régressions.html"/>
-<link rel="next" href="classification.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapitre 2 Analyse en Composantes Principales | Méthodes Quantitatives en Géographie</title>
+<meta name="author" content="Hugo Périlleux">
+<meta name="description" content="2.1 Objectifs L’objectif de ce TP est de réaliser une analyse en composante principale sur base de données électorales.  2.2 Données données des élections présidentielles 2022 par communes :...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Chapitre 2 Analyse en Composantes Principales | Méthodes Quantitatives en Géographie">
+<meta property="og:type" content="book">
+<meta property="og:description" content="2.1 Objectifs L’objectif de ce TP est de réaliser une analyse en composante principale sur base de données électorales.  2.2 Données données des élections présidentielles 2022 par communes :...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapitre 2 Analyse en Composantes Principales | Méthodes Quantitatives en Géographie">
+<meta name="twitter:description" content="2.1 Objectifs L’objectif de ce TP est de réaliser une analyse en composante principale sur base de données électorales.  2.2 Données données des élections présidentielles 2022 par communes :...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="régressions.html"><a href="régressions.html"><i class="fa fa-check"></i><b>1</b> Régressions</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="régressions.html"><a href="régressions.html#préparation"><i class="fa fa-check"></i><b>1.1</b> Préparation</a></li>
-<li class="chapter" data-level="1.2" data-path="régressions.html"><a href="régressions.html#analyse-de-régression"><i class="fa fa-check"></i><b>1.2</b> Analyse de régression</a>
-<ul>
-<li class="chapter" data-level="1.2.1" data-path="régressions.html"><a href="régressions.html#visualiser-et-supprimer-les-outliers"><i class="fa fa-check"></i><b>1.2.1</b> Visualiser et supprimer les outliers</a></li>
-<li class="chapter" data-level="1.2.2" data-path="régressions.html"><a href="régressions.html#régression-simple"><i class="fa fa-check"></i><b>1.2.2</b> Régression simple</a></li>
-<li class="chapter" data-level="1.2.3" data-path="régressions.html"><a href="régressions.html#régression-multiple"><i class="fa fa-check"></i><b>1.2.3</b> Régression multiple</a></li>
-<li class="chapter" data-level="1.2.4" data-path="régressions.html"><a href="régressions.html#régression-polynomiale"><i class="fa fa-check"></i><b>1.2.4</b> Régression polynomiale</a></li>
-<li class="chapter" data-level="1.2.5" data-path="régressions.html"><a href="régressions.html#visualisation"><i class="fa fa-check"></i><b>1.2.5</b> Visualisation</a></li>
-<li class="chapter" data-level="1.2.6" data-path="régressions.html"><a href="régressions.html#réaliser-les-tests-des-hypothèses"><i class="fa fa-check"></i><b>1.2.6</b> Réaliser les tests des hypothèses</a></li>
-</ul></li>
-<li class="chapter" data-level="1.3" data-path="régressions.html"><a href="régressions.html#analyse-géographique"><i class="fa fa-check"></i><b>1.3</b> Analyse géographique</a>
-<ul>
-<li class="chapter" data-level="1.3.1" data-path="régressions.html"><a href="régressions.html#analyse-géographique-simple"><i class="fa fa-check"></i><b>1.3.1</b> Analyse géographique simple</a></li>
-<li class="chapter" data-level="1.3.2" data-path="régressions.html"><a href="régressions.html#cartographier-les-résidus"><i class="fa fa-check"></i><b>1.3.2</b> Cartographier les résidus</a></li>
-<li class="chapter" data-level="1.3.3" data-path="régressions.html"><a href="régressions.html#ajouter-une-variable-géographique"><i class="fa fa-check"></i><b>1.3.3</b> Ajouter une variable géographique</a></li>
-<li class="chapter" data-level="1.3.4" data-path="régressions.html"><a href="régressions.html#analyse-de-corrélation-spatiale"><i class="fa fa-check"></i><b>1.3.4</b> Analyse de corrélation spatiale</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html"><i class="fa fa-check"></i><b>2</b> Analyse en Composantes Principales</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#objectif"><i class="fa fa-check"></i><b>2.1</b> Objectif:</a></li>
-<li class="chapter" data-level="2.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#données"><i class="fa fa-check"></i><b>2.2</b> Données:</a></li>
-<li class="chapter" data-level="2.3" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#importation-des-données"><i class="fa fa-check"></i><b>2.3</b> Importation des données</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#élections-2022"><i class="fa fa-check"></i><b>2.3.1</b> Élections 2022</a></li>
-<li class="chapter" data-level="2.3.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#communes"><i class="fa fa-check"></i><b>2.3.2</b> Communes</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#recodage"><i class="fa fa-check"></i><b>2.4</b> Recodage</a></li>
-<li class="chapter" data-level="2.5" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#première-visualisation-des-données"><i class="fa fa-check"></i><b>2.5</b> Première visualisation des données</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#une-carte-par-variable"><i class="fa fa-check"></i><b>2.5.1</b> Une carte par variable</a></li>
-<li class="chapter" data-level="2.5.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#matrice-de-corrélation"><i class="fa fa-check"></i><b>2.5.2</b> Matrice de corrélation</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#réaliser-lacp"><i class="fa fa-check"></i><b>2.6</b> Réaliser l’ACP</a>
-<ul>
-<li class="chapter" data-level="2.6.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#une-acp-non-pondérée"><i class="fa fa-check"></i><b>2.6.1</b> Une ACP non pondérée</a></li>
-<li class="chapter" data-level="2.6.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#pondérer-le-calcul-de-lacp"><i class="fa fa-check"></i><b>2.6.2</b> Pondérer le calcul de l’ACP</a></li>
-</ul></li>
-<li class="chapter" data-level="2.7" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#visualiser-les-résultats"><i class="fa fa-check"></i><b>2.7</b> Visualiser les résultats</a>
-<ul>
-<li class="chapter" data-level="2.7.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#cercles-de-corrélation"><i class="fa fa-check"></i><b>2.7.1</b> Cercles de corrélation</a></li>
-<li class="chapter" data-level="2.7.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#contributions-de-chaque-variables"><i class="fa fa-check"></i><b>2.7.2</b> Contributions de chaque variables</a></li>
-<li class="chapter" data-level="2.7.3" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#valeurs-propres-et-de-la-variance-expliquée"><i class="fa fa-check"></i><b>2.7.3</b> Valeurs propres et % de la variance expliquée</a></li>
-<li class="chapter" data-level="2.7.4" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#carte-de-scores"><i class="fa fa-check"></i><b>2.7.4</b> Carte de scores</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#ajouter-des-variables-supplémentaires"><i class="fa fa-check"></i><b>2.8</b> Ajouter des variables supplémentaires</a>
-<ul>
-<li class="chapter" data-level="2.8.1" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#importation-des-données-1"><i class="fa fa-check"></i><b>2.8.1</b> Importation des données</a></li>
-<li class="chapter" data-level="2.8.2" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#acp-avec-les-variables-supplémentaires"><i class="fa fa-check"></i><b>2.8.2</b> ACP avec les variables supplémentaires</a></li>
-</ul></li>
-<li class="chapter" data-level="2.9" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#aller-plus-loin"><i class="fa fa-check"></i><b>2.9</b> Aller plus loin</a></li>
-<li class="chapter" data-level="2.10" data-path="analyse-en-composantes-principales.html"><a href="analyse-en-composantes-principales.html#ressources-utilisées"><i class="fa fa-check"></i><b>2.10</b> Ressources utilisées:</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="classification.html"><a href="classification.html"><i class="fa fa-check"></i><b>3</b> Classification</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="classification.html"><a href="classification.html#objectifs"><i class="fa fa-check"></i><b>3.1</b> Objectifs</a></li>
-<li class="chapter" data-level="3.2" data-path="classification.html"><a href="classification.html#préparation-1"><i class="fa fa-check"></i><b>3.2</b> Préparation</a></li>
-<li class="chapter" data-level="3.3" data-path="classification.html"><a href="classification.html#acp"><i class="fa fa-check"></i><b>3.3</b> ACP</a></li>
-<li class="chapter" data-level="3.4" data-path="classification.html"><a href="classification.html#classification-ascendente-hiérarchique"><i class="fa fa-check"></i><b>3.4</b> Classification ascendente hiérarchique</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="classification.html"><a href="classification.html#calcul-de-la-classification"><i class="fa fa-check"></i><b>3.4.1</b> Calcul de la classification</a></li>
-<li class="chapter" data-level="3.4.2" data-path="classification.html"><a href="classification.html#choix-du-nombre-de-classe"><i class="fa fa-check"></i><b>3.4.2</b> Choix du nombre de classe</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="classification.html"><a href="classification.html#visualisation-des-résultats"><i class="fa fa-check"></i><b>3.5</b> Visualisation des résultats</a>
-<ul>
-<li class="chapter" data-level="3.5.1" data-path="classification.html"><a href="classification.html#extraire-les-groupes"><i class="fa fa-check"></i><b>3.5.1</b> Extraire les groupes</a></li>
-<li class="chapter" data-level="3.5.2" data-path="classification.html"><a href="classification.html#un-graphique-selon-les-groupes"><i class="fa fa-check"></i><b>3.5.2</b> Un graphique selon les groupes</a></li>
-<li class="chapter" data-level="3.5.3" data-path="classification.html"><a href="classification.html#une-carte-des-groupes"><i class="fa fa-check"></i><b>3.5.3</b> Une carte des groupes</a></li>
-<li class="chapter" data-level="3.5.4" data-path="classification.html"><a href="classification.html#un-tableau-de-statistique-pour-chaque-groupes"><i class="fa fa-check"></i><b>3.5.4</b> Un tableau de statistique pour chaque groupes</a></li>
-<li class="chapter" data-level="3.5.5" data-path="classification.html"><a href="classification.html#comparaison-avec-une-autre-variable"><i class="fa fa-check"></i><b>3.5.5</b> Comparaison avec une autre variable</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="classification.html"><a href="classification.html#ressources-utilisées-1"><i class="fa fa-check"></i><b>3.6</b> Ressources utilisées</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Méthodes Quantitatives en Géographie</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Méthodes Quantitatives en Géographie</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction</a></li>
+<li><a class="" href="r%C3%A9gressions.html"><span class="header-section-number">1</span> Régressions</a></li>
+<li><a class="active" href="analyse-en-composantes-principales.html"><span class="header-section-number">2</span> Analyse en Composantes Principales</a></li>
+<li><a class="" href="classification.html"><span class="header-section-number">3</span> Classification</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="analyse-en-composantes-principales" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Analyse en Composantes Principales<a href="analyse-en-composantes-principales.html#analyse-en-composantes-principales" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="objectif" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Objectif:<a href="analyse-en-composantes-principales.html#objectif" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="analyse-en-composantes-principales" class="section level1" number="2">
+<h1>
+<span class="header-section-number">Chapitre 2</span> Analyse en Composantes Principales<a class="anchor" aria-label="anchor" href="#analyse-en-composantes-principales"><i class="fas fa-link"></i></a>
+</h1>
+<div id="objectifs" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Objectifs<a class="anchor" aria-label="anchor" href="#objectifs"><i class="fas fa-link"></i></a>
+</h2>
 <p>L’objectif de ce TP est de réaliser une analyse en composante principale sur base de données électorales.</p>
 </div>
-<div id="données" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Données:<a href="analyse-en-composantes-principales.html#données" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="données" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Données<a class="anchor" aria-label="anchor" href="#donn%C3%A9es"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>données des élections présidentielles 2022 par communes : pres2022comm.csv (<a href="https://unehistoireduconflitpolitique.fr/telecharger.html" class="uri">https://unehistoireduconflitpolitique.fr/telecharger.html</a>)</li>
 </ul>
@@ -256,25 +79,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>population par commune: population_insee_2021.xlsx (5)</p></li>
 </ul>
 <ol style="list-style-type: decimal">
-<li>INSEE: <a href="https://www.data.gouv.fr/fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap/" class="uri">https://www.data.gouv.fr/fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap/</a></li>
-<li>INSEE: <a href="https://www.data.gouv.fr/fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap/" class="uri">https://www.data.gouv.fr/fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap/</a></li>
-<li>INSEE: <a href="https://www.insee.fr/fr/information/2560452" class="uri">https://www.insee.fr/fr/information/2560452</a></li>
-<li>INSEE: <a href="https://www.insee.fr/fr/statistiques/7756855?sommaire=7756859" class="uri">https://www.insee.fr/fr/statistiques/7756855?sommaire=7756859</a></li>
-<li>INSEE : <a href="https://www.insee.fr/fr/statistiques/7739582?sommaire=7728826" class="uri">https://www.insee.fr/fr/statistiques/7739582?sommaire=7728826</a></li>
+<li>INSEE: <a href="https://www.data.gouv.fr/fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap/" class="uri">https://www.data.gouv.fr/fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap/</a>
+</li>
+<li>INSEE: <a href="https://www.data.gouv.fr/fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap/" class="uri">https://www.data.gouv.fr/fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap/</a>
+</li>
+<li>INSEE: <a href="https://www.insee.fr/fr/information/2560452" class="uri">https://www.insee.fr/fr/information/2560452</a>
+</li>
+<li>INSEE: <a href="https://www.insee.fr/fr/statistiques/7756855?sommaire=7756859" class="uri">https://www.insee.fr/fr/statistiques/7756855?sommaire=7756859</a>
+</li>
+<li>INSEE : <a href="https://www.insee.fr/fr/statistiques/7739582?sommaire=7728826" class="uri">https://www.insee.fr/fr/statistiques/7739582?sommaire=7728826</a>
+</li>
 </ol>
 <p>Pour ce TP nous utiliserons les packages suivants:</p>
 <p>De façon maintenant habituelle:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="analyse-en-composantes-principales.html#cb71-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb71-2"><a href="analyse-en-composantes-principales.html#cb71-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb71-3"><a href="analyse-en-composantes-principales.html#cb71-3" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb71-4"><a href="analyse-en-composantes-principales.html#cb71-4" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb71-5"><a href="analyse-en-composantes-principales.html#cb71-5" tabindex="-1"></a><span class="fu">library</span>(remotes) </span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://riatelab.github.io/mapsf/">mapsf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span> </span></code></pre></div>
 <p>Et deux packages développés pour réaliser des ACP et visualiser les résultats:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="analyse-en-composantes-principales.html#cb72-1" tabindex="-1"></a><span class="co">#install_version(&quot;estimability&quot;, &quot;1.4.1&quot;)</span></span>
-<span id="cb72-2"><a href="analyse-en-composantes-principales.html#cb72-2" tabindex="-1"></a><span class="co">#install.packages(&quot;FactoMineR&quot;) </span></span>
-<span id="cb72-3"><a href="analyse-en-composantes-principales.html#cb72-3" tabindex="-1"></a><span class="co">#install.packages(&quot;factoextra&quot;)</span></span>
-<span id="cb72-4"><a href="analyse-en-composantes-principales.html#cb72-4" tabindex="-1"></a><span class="fu">library</span>(FactoMineR)</span>
-<span id="cb72-5"><a href="analyse-en-composantes-principales.html#cb72-5" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#install_version("estimability", "1.4.1")</span></span>
+<span><span class="co">#install.packages("FactoMineR") </span></span>
+<span><span class="co">#install.packages("factoextra")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://factominer.free.fr">FactoMineR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.sthda.com/english/rpkgs/factoextra">factoextra</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
 <p>Les objectifs pour réaliser une ACP sont généralement :</p>
 <ol style="list-style-type: decimal">
 <li><p>Débroussailler un large set de données avec plein de variables</p></li>
@@ -282,416 +113,447 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Préparer à une classification</p></li>
 </ol>
 <p>Dans le cas ici, on va plutôt réaliser une ACP suivant le premier objectif sur les votes exprimés aux élections en Île de France aux élections présidentielles de 2022. L’objectif sera de voir on retrouve des structures dans la géographie de cette élection.</p>
-</div>
-<div id="importation-des-données" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Importation des données<a href="analyse-en-composantes-principales.html#importation-des-données" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="élections-2022" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Élections 2022<a href="analyse-en-composantes-principales.html#élections-2022" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="importation-des-données" class="section level3" number="2.2.1">
+<h3>
+<span class="header-section-number">2.2.1</span> Importation des données<a class="anchor" aria-label="anchor" href="#importation-des-donn%C3%A9es"><i class="fas fa-link"></i></a>
+</h3>
+<div id="élections-2022" class="section level4" number="2.2.1.1">
+<h4>
+<span class="header-section-number">2.2.1.1</span> Élections 2022<a class="anchor" aria-label="anchor" href="#%C3%A9lections-2022"><i class="fas fa-link"></i></a>
+</h4>
 <p>Importation des données:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="analyse-en-composantes-principales.html#cb73-1" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read_delim</span>(<span class="st">&quot;data/France/pres2022comm.csv&quot;</span>, <span class="at">delim=</span><span class="st">&quot;,&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb73-2"><a href="analyse-en-composantes-principales.html#cb73-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">19</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb73-3"><a href="analyse-en-composantes-principales.html#cb73-3" tabindex="-1"></a>  <span class="fu">filter</span>(codecommune<span class="sc">!=</span><span class="st">&quot;75056&quot;</span>) <span class="co"># %&gt;% # On enlève la communes de Paris</span></span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span><span class="st">"data/France/pres2022comm.csv"</span>, delim<span class="op">=</span><span class="st">","</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">19</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">codecommune</span><span class="op">!=</span><span class="st">"75056"</span><span class="op">)</span> <span class="co"># %&gt;% # On enlève la communes de Paris</span></span></code></pre></div>
 <pre><code>## Rows: 34867 Columns: 97
-## ── Column specification ─────────────────────────────────────
-## Delimiter: &quot;,&quot;
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
 ## chr  (4): dep, nomdep, codecommune, nomcommune
-## dbl (93): inscrits, votants, exprimes, voixARTHAUD, voixP...
+## dbl (93): inscrits, votants, exprimes, voixARTHAUD, voixPOUTOU, voixROUSSEL,...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>On prend une table pour ne sélectionner que l’Île de France:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="analyse-en-composantes-principales.html#cb75-1" tabindex="-1"></a>communes_table<span class="ot">&lt;-</span><span class="fu">read_delim</span>(<span class="st">&quot;data/France/commune2021.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes_table</span><span class="op">&lt;-</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span><span class="st">"data/France/commune2021.csv"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Rows: 37742 Columns: 12
-## ── Column specification ─────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (11): TYPECOM, COM, REG, DEP, CTCD, ARR, NCC, NCCENR,...
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (11): TYPECOM, COM, REG, DEP, CTCD, ARR, NCC, NCCENR, LIBELLE, CAN, COMP...
 ## dbl  (1): TNCC
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="analyse-en-composantes-principales.html#cb77-1" tabindex="-1"></a>data<span class="ot">&lt;-</span>data <span class="sc">%&gt;%</span></span>
-<span id="cb77-2"><a href="analyse-en-composantes-principales.html#cb77-2" tabindex="-1"></a>  <span class="fu">left_join</span>(communes_table, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;codecommune&quot;</span><span class="ot">=</span><span class="st">&quot;COM&quot;</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb77-3"><a href="analyse-en-composantes-principales.html#cb77-3" tabindex="-1"></a>  <span class="fu">filter</span>(REG<span class="sc">==</span><span class="dv">11</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb77-4"><a href="analyse-en-composantes-principales.html#cb77-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">20</span><span class="sc">:</span><span class="dv">30</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">communes_table</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"codecommune"</span><span class="op">=</span><span class="st">"COM"</span><span class="op">)</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">REG</span><span class="op">==</span><span class="fl">11</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="communes" class="section level3 hasAnchor" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Communes<a href="analyse-en-composantes-principales.html#communes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="analyse-en-composantes-principales.html#cb78-1" tabindex="-1"></a>communes<span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/France/communes_arrond_ile_de_france.gpkg&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb78-2"><a href="analyse-en-composantes-principales.html#cb78-2" tabindex="-1"></a>  <span class="fu">filter</span>(insee<span class="sc">!=</span><span class="st">&quot;75056&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `communes_arrond_ile_de_france&#39; from data source `C:\Users\hugop\Nextcloud\git\manuel_geo_quanti\data\France\communes_arrond_ile_de_france.gpkg&#39; 
-##   using driver `GPKG&#39;
+<div id="communes" class="section level4" number="2.2.1.2">
+<h4>
+<span class="header-section-number">2.2.1.2</span> Communes<a class="anchor" aria-label="anchor" href="#communes"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes</span><span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">st_read</a></span><span class="op">(</span><span class="st">"data/France/communes_arrond_ile_de_france.gpkg"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">insee</span><span class="op">!=</span><span class="st">"75056"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Reading layer `communes_arrond_ile_de_france' from data source 
+##   `C:\Users\hugop\Nextcloud\git\manuel_geo_quanti\data\France\communes_arrond_ile_de_france.gpkg' 
+##   using driver `GPKG'
 ## Simple feature collection with 1287 features and 4 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: 1.446244 ymin: 48.12015 xmax: 3.559221 ymax: 49.24143
 ## Geodetic CRS:  WGS 84</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="analyse-en-composantes-principales.html#cb80-1" tabindex="-1"></a><span class="co"># On importe les arrondissements de Paris, Lyon et Marseille</span></span>
-<span id="cb80-2"><a href="analyse-en-composantes-principales.html#cb80-2" tabindex="-1"></a>arrond_lyon_mars_paris<span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/France/arrondissements_municipaux-20180711-shp/arrondissements_municipaux-20180711.shp&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb80-3"><a href="analyse-en-composantes-principales.html#cb80-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>surf_km2) <span class="sc">%&gt;%</span> </span>
-<span id="cb80-4"><a href="analyse-en-composantes-principales.html#cb80-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">geom=</span>geometry)</span></code></pre></div>
-<pre><code>## Reading layer `arrondissements_municipaux-20180711&#39; from data source `C:\Users\hugop\Nextcloud\git\manuel_geo_quanti\data\France\arrondissements_municipaux-20180711-shp\arrondissements_municipaux-20180711.shp&#39; 
-##   using driver `ESRI Shapefile&#39;
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># On importe les arrondissements de Paris, Lyon et Marseille</span></span>
+<span><span class="va">arrond_lyon_mars_paris</span><span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">st_read</a></span><span class="op">(</span><span class="st">"data/France/arrondissements_municipaux-20180711-shp/arrondissements_municipaux-20180711.shp"</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">surf_km2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>geom<span class="op">=</span><span class="va">geometry</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Reading layer `arrondissements_municipaux-20180711' from data source 
+##   `C:\Users\hugop\Nextcloud\git\manuel_geo_quanti\data\France\arrondissements_municipaux-20180711-shp\arrondissements_municipaux-20180711.shp' 
+##   using driver `ESRI Shapefile'
 ## Simple feature collection with 45 features and 4 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: 2.224122 ymin: 43.19714 xmax: 5.532476 ymax: 48.90216
 ## Geodetic CRS:  WGS 84</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="analyse-en-composantes-principales.html#cb82-1" tabindex="-1"></a>communes<span class="ot">&lt;-</span><span class="fu">bind_rows</span>(communes,arrond_lyon_mars_paris) <span class="co"># On joint communes et arrondissements</span></span>
-<span id="cb82-2"><a href="analyse-en-composantes-principales.html#cb82-2" tabindex="-1"></a><span class="fu">rm</span>(arrond_lyon_mars_paris)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes</span><span class="op">&lt;-</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">communes</span>,<span class="va">arrond_lyon_mars_paris</span><span class="op">)</span> <span class="co"># On joint communes et arrondissements</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">arrond_lyon_mars_paris</span><span class="op">)</span></span></code></pre></div>
 <p>On ne garde que les communes de l’Ile de France:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="analyse-en-composantes-principales.html#cb83-1" tabindex="-1"></a>communes<span class="ot">&lt;-</span>communes <span class="sc">%&gt;%</span></span>
-<span id="cb83-2"><a href="analyse-en-composantes-principales.html#cb83-2" tabindex="-1"></a>  <span class="fu">left_join</span>(communes_table, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;insee&quot;</span><span class="ot">=</span><span class="st">&quot;COM&quot;</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb83-3"><a href="analyse-en-composantes-principales.html#cb83-3" tabindex="-1"></a>  <span class="fu">filter</span>(REG<span class="sc">==</span><span class="dv">11</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb83-4"><a href="analyse-en-composantes-principales.html#cb83-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">15</span>))</span></code></pre></div>
-<pre><code>## Warning in sf_column %in% names(g): Detected an unexpected many-to-many relationship between `x`
-## and `y`.
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes</span><span class="op">&lt;-</span><span class="va">communes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">communes_table</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"insee"</span><span class="op">=</span><span class="st">"COM"</span><span class="op">)</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">REG</span><span class="op">==</span><span class="fl">11</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning in sf_column %in% names(g): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 17 of `x` matches multiple rows in `y`.
 ## ℹ Row 31675 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set
-##   `relationship = &quot;many-to-many&quot;` to silence this warning.</code></pre>
+## ℹ If a many-to-many relationship is expected, set `relationship =
+##   "many-to-many"` to silence this warning.</code></pre>
 <p>On calcul la densité par communes:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="analyse-en-composantes-principales.html#cb85-1" tabindex="-1"></a>communes<span class="ot">&lt;-</span>communes <span class="sc">%&gt;%</span></span>
-<span id="cb85-2"><a href="analyse-en-composantes-principales.html#cb85-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">surface=</span><span class="fu">as.numeric</span>(<span class="fu">st_area</span>(geom))<span class="sc">/</span><span class="dv">10000</span>) <span class="co"># On calcul le superficie de chaque communes</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes</span><span class="op">&lt;-</span><span class="va">communes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>surface<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">geom</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fl">10000</span><span class="op">)</span> <span class="co"># On calcul le superficie de chaque communes</span></span></code></pre></div>
 <p>On créé un objet département pour la cartographie:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="analyse-en-composantes-principales.html#cb86-1" tabindex="-1"></a>departements_Paris<span class="ot">&lt;-</span>communes <span class="sc">%&gt;%</span></span>
-<span id="cb86-2"><a href="analyse-en-composantes-principales.html#cb86-2" tabindex="-1"></a>  <span class="fu">left_join</span>(communes_table, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;insee&quot;</span><span class="ot">=</span><span class="st">&quot;COM&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb86-3"><a href="analyse-en-composantes-principales.html#cb86-3" tabindex="-1"></a>  <span class="fu">filter</span>(REG<span class="sc">==</span><span class="dv">11</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb86-4"><a href="analyse-en-composantes-principales.html#cb86-4" tabindex="-1"></a>  <span class="fu">group_by</span>(DEP,REG) <span class="sc">%&gt;%</span></span>
-<span id="cb86-5"><a href="analyse-en-composantes-principales.html#cb86-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">geom=</span><span class="fu">st_union</span>(geom))</span></code></pre></div>
-<pre><code>## Warning in sf_column %in% names(g): Detected an unexpected many-to-many relationship between `x`
-## and `y`.
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">departements_Paris</span><span class="op">&lt;-</span><span class="va">communes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">communes_table</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"insee"</span><span class="op">=</span><span class="st">"COM"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">REG</span><span class="op">==</span><span class="fl">11</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">DEP</span>,<span class="va">REG</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>geom<span class="op">=</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html">st_union</a></span><span class="op">(</span><span class="va">geom</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning in sf_column %in% names(g): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 17 of `x` matches multiple rows in `y`.
 ## ℹ Row 31675 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set
-##   `relationship = &quot;many-to-many&quot;` to silence this warning.</code></pre>
-<pre><code>## `summarise()` has grouped output by &#39;DEP&#39;. You can override
-## using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="analyse-en-composantes-principales.html#cb89-1" tabindex="-1"></a><span class="fu">rm</span>(communes_table)</span></code></pre></div>
+## ℹ If a many-to-many relationship is expected, set `relationship =
+##   "many-to-many"` to silence this warning.</code></pre>
+<pre><code>## `summarise()` has grouped output by 'DEP'. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">communes_table</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="recodage" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Recodage<a href="analyse-en-composantes-principales.html#recodage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="recodage" class="section level3" number="2.2.2">
+<h3>
+<span class="header-section-number">2.2.2</span> Recodage<a class="anchor" aria-label="anchor" href="#recodage"><i class="fas fa-link"></i></a>
+</h3>
 <p>Pour réaliser l’ACP il faut d’abord recoder les variables. On utilise généralement des variables en proportion:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="analyse-en-composantes-principales.html#cb90-1" tabindex="-1"></a>data<span class="ot">&lt;-</span>data <span class="sc">%&gt;%</span></span>
-<span id="cb90-2"><a href="analyse-en-composantes-principales.html#cb90-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ARTHAUD=</span>voixARTHAUD<span class="sc">/</span>exprimes,</span>
-<span id="cb90-3"><a href="analyse-en-composantes-principales.html#cb90-3" tabindex="-1"></a>         <span class="at">POUTOU=</span>voixPOUTOU<span class="sc">/</span>exprimes,</span>
-<span id="cb90-4"><a href="analyse-en-composantes-principales.html#cb90-4" tabindex="-1"></a>         <span class="at">ROUSSEL=</span>voixROUSSEL<span class="sc">/</span>exprimes,</span>
-<span id="cb90-5"><a href="analyse-en-composantes-principales.html#cb90-5" tabindex="-1"></a>         <span class="at">MELENCHON=</span>voixMELENCHON<span class="sc">/</span>exprimes,</span>
-<span id="cb90-6"><a href="analyse-en-composantes-principales.html#cb90-6" tabindex="-1"></a>         <span class="at">JADOT=</span>voixJADOT<span class="sc">/</span>exprimes,</span>
-<span id="cb90-7"><a href="analyse-en-composantes-principales.html#cb90-7" tabindex="-1"></a>         <span class="at">HIDALGO=</span>voixHIDALGO<span class="sc">/</span>exprimes,</span>
-<span id="cb90-8"><a href="analyse-en-composantes-principales.html#cb90-8" tabindex="-1"></a>         <span class="at">LASSALLE=</span>voixLASSALLE<span class="sc">/</span>exprimes,</span>
-<span id="cb90-9"><a href="analyse-en-composantes-principales.html#cb90-9" tabindex="-1"></a>         <span class="at">MACRON=</span>voixMACRON<span class="sc">/</span>exprimes,</span>
-<span id="cb90-10"><a href="analyse-en-composantes-principales.html#cb90-10" tabindex="-1"></a>         <span class="at">PECRESSE=</span>voixPECRESSE<span class="sc">/</span>exprimes,</span>
-<span id="cb90-11"><a href="analyse-en-composantes-principales.html#cb90-11" tabindex="-1"></a>         <span class="at">ZEMMOUR=</span>voixZEMMOUR<span class="sc">/</span>exprimes,</span>
-<span id="cb90-12"><a href="analyse-en-composantes-principales.html#cb90-12" tabindex="-1"></a>         <span class="at">DUPONTAIGNAN=</span>voixDUPONTAIGNAN<span class="sc">/</span>exprimes,</span>
-<span id="cb90-13"><a href="analyse-en-composantes-principales.html#cb90-13" tabindex="-1"></a>         <span class="at">MLEPEN=</span>voixMLEPEN<span class="sc">/</span>exprimes)</span>
-<span id="cb90-14"><a href="analyse-en-composantes-principales.html#cb90-14" tabindex="-1"></a></span>
-<span id="cb90-15"><a href="analyse-en-composantes-principales.html#cb90-15" tabindex="-1"></a></span>
-<span id="cb90-16"><a href="analyse-en-composantes-principales.html#cb90-16" tabindex="-1"></a><span class="co"># De façon raccourcie, il est possible de réaliser de la façon suivante:</span></span>
-<span id="cb90-17"><a href="analyse-en-composantes-principales.html#cb90-17" tabindex="-1"></a></span>
-<span id="cb90-18"><a href="analyse-en-composantes-principales.html#cb90-18" tabindex="-1"></a><span class="co"># - en utilisant des pivot (tidyr) et un group by</span></span>
-<span id="cb90-19"><a href="analyse-en-composantes-principales.html#cb90-19" tabindex="-1"></a><span class="co"># data&lt;-data %&gt;%</span></span>
-<span id="cb90-20"><a href="analyse-en-composantes-principales.html#cb90-20" tabindex="-1"></a><span class="co">#   pivot_longer(cols= 8:19,names_to =&quot;candidat&quot;, values_to = &quot;voix&quot; ) %&gt;%</span></span>
-<span id="cb90-21"><a href="analyse-en-composantes-principales.html#cb90-21" tabindex="-1"></a><span class="co">#   mutate(voix=voix/exprimes) %&gt;%</span></span>
-<span id="cb90-22"><a href="analyse-en-composantes-principales.html#cb90-22" tabindex="-1"></a><span class="co">#   pivot_wider(values_from = &quot;voix&quot;, names_from = &quot;candidat&quot;)</span></span>
-<span id="cb90-23"><a href="analyse-en-composantes-principales.html#cb90-23" tabindex="-1"></a></span>
-<span id="cb90-24"><a href="analyse-en-composantes-principales.html#cb90-24" tabindex="-1"></a><span class="co"># - de façon encore plus synthétique, en utilisant un across:</span></span>
-<span id="cb90-25"><a href="analyse-en-composantes-principales.html#cb90-25" tabindex="-1"></a><span class="co"># data&lt;-data %&gt;%</span></span>
-<span id="cb90-26"><a href="analyse-en-composantes-principales.html#cb90-26" tabindex="-1"></a><span class="co">#  mutate(across(8:19, ~ . /exprimes))</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ARTHAUD<span class="op">=</span><span class="va">voixARTHAUD</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         POUTOU<span class="op">=</span><span class="va">voixPOUTOU</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         ROUSSEL<span class="op">=</span><span class="va">voixROUSSEL</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         MELENCHON<span class="op">=</span><span class="va">voixMELENCHON</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         JADOT<span class="op">=</span><span class="va">voixJADOT</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         HIDALGO<span class="op">=</span><span class="va">voixHIDALGO</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         LASSALLE<span class="op">=</span><span class="va">voixLASSALLE</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         MACRON<span class="op">=</span><span class="va">voixMACRON</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         PECRESSE<span class="op">=</span><span class="va">voixPECRESSE</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         ZEMMOUR<span class="op">=</span><span class="va">voixZEMMOUR</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         DUPONTAIGNAN<span class="op">=</span><span class="va">voixDUPONTAIGNAN</span><span class="op">/</span><span class="va">exprimes</span>,</span>
+<span>         MLEPEN<span class="op">=</span><span class="va">voixMLEPEN</span><span class="op">/</span><span class="va">exprimes</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># De façon raccourcie, il est possible de réaliser de la façon suivante:</span></span>
+<span></span>
+<span><span class="co"># - en utilisant des pivot (tidyr) et un group by</span></span>
+<span><span class="co"># data&lt;-data %&gt;%</span></span>
+<span><span class="co">#   pivot_longer(cols= 8:19,names_to ="candidat", values_to = "voix" ) %&gt;%</span></span>
+<span><span class="co">#   mutate(voix=voix/exprimes) %&gt;%</span></span>
+<span><span class="co">#   pivot_wider(values_from = "voix", names_from = "candidat")</span></span>
+<span></span>
+<span><span class="co"># - de façon encore plus synthétique, en utilisant un across:</span></span>
+<span><span class="co"># data&lt;-data %&gt;%</span></span>
+<span><span class="co">#  mutate(across(8:19, ~ . /exprimes))</span></span></code></pre></div>
 </div>
-<div id="première-visualisation-des-données" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Première visualisation des données<a href="analyse-en-composantes-principales.html#première-visualisation-des-données" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="analyse-en-composantes-principales.html#cb91-1" tabindex="-1"></a>communes_voix<span class="ot">&lt;-</span>communes <span class="sc">%&gt;%</span></span>
-<span id="cb91-2"><a href="analyse-en-composantes-principales.html#cb91-2" tabindex="-1"></a>  <span class="fu">left_join</span>(data, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;insee&quot;</span><span class="ot">=</span><span class="st">&quot;codecommune&quot;</span>))</span></code></pre></div>
-<div id="une-carte-par-variable" class="section level3 hasAnchor" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Une carte par variable<a href="analyse-en-composantes-principales.html#une-carte-par-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="première-visualisation-des-données" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Première visualisation des données<a class="anchor" aria-label="anchor" href="#premi%C3%A8re-visualisation-des-donn%C3%A9es"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes_voix</span><span class="op">&lt;-</span><span class="va">communes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">data</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"insee"</span><span class="op">=</span><span class="st">"codecommune"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div id="une-carte-par-variable" class="section level3" number="2.3.1">
+<h3>
+<span class="header-section-number">2.3.1</span> Une carte par variable<a class="anchor" aria-label="anchor" href="#une-carte-par-variable"><i class="fas fa-link"></i></a>
+</h3>
 <p>On peut réaliser une carte pour chaque candidat:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="analyse-en-composantes-principales.html#cb92-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">12</span><span class="sc">:</span><span class="dv">23</span>) {</span>
-<span id="cb92-2"><a href="analyse-en-composantes-principales.html#cb92-2" tabindex="-1"></a>  <span class="co"># mf_export(x = communes_voix ,</span></span>
-<span id="cb92-3"><a href="analyse-en-composantes-principales.html#cb92-3" tabindex="-1"></a>  <span class="co">#           filename =paste0(&quot;TP09/cartes_candidats/carte_&quot;,names(communes_voix)[i],&quot;.png&quot; ),</span></span>
-<span id="cb92-4"><a href="analyse-en-composantes-principales.html#cb92-4" tabindex="-1"></a>  <span class="co">#           width = 900)</span></span>
-<span id="cb92-5"><a href="analyse-en-composantes-principales.html#cb92-5" tabindex="-1"></a>  <span class="fu">mf_map</span>(<span class="at">x =</span> communes_voix, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;gray25&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.1</span>)</span>
-<span id="cb92-6"><a href="analyse-en-composantes-principales.html#cb92-6" tabindex="-1"></a>  <span class="fu">mf_map</span>(<span class="at">x =</span> departements_Paris, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;gray25&quot;</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">add=</span>T)</span>
-<span id="cb92-7"><a href="analyse-en-composantes-principales.html#cb92-7" tabindex="-1"></a>  <span class="fu">mf_map</span>(communes_voix ,</span>
-<span id="cb92-8"><a href="analyse-en-composantes-principales.html#cb92-8" tabindex="-1"></a>         <span class="at">var=</span> <span class="fu">c</span>(<span class="fu">names</span>(communes_voix)[i], <span class="fu">names</span>(communes_voix)[i<span class="sc">+</span><span class="dv">12</span>]),</span>
-<span id="cb92-9"><a href="analyse-en-composantes-principales.html#cb92-9" tabindex="-1"></a>         <span class="co">#val_max=max(unlist(communes_voix[,11:22])),</span></span>
-<span id="cb92-10"><a href="analyse-en-composantes-principales.html#cb92-10" tabindex="-1"></a>         <span class="at">type=</span><span class="st">&quot;prop_choro&quot;</span>,</span>
-<span id="cb92-11"><a href="analyse-en-composantes-principales.html#cb92-11" tabindex="-1"></a>         <span class="at">pal=</span><span class="st">&quot;Viridis&quot;</span>,</span>
-<span id="cb92-12"><a href="analyse-en-composantes-principales.html#cb92-12" tabindex="-1"></a>         <span class="at">inches=</span><span class="fl">0.1</span>,</span>
-<span id="cb92-13"><a href="analyse-en-composantes-principales.html#cb92-13" tabindex="-1"></a>         <span class="at">add=</span>T)</span>
-<span id="cb92-14"><a href="analyse-en-composantes-principales.html#cb92-14" tabindex="-1"></a>  <span class="co">#dev.off()</span></span>
-<span id="cb92-15"><a href="analyse-en-composantes-principales.html#cb92-15" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## 184 &#39;0&#39; values are not plotted on the map.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
-<pre><code>## 101 &#39;0&#39; values are not plotted on the map.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-2.png" width="672" /></p>
-<pre><code>## 42 &#39;0&#39; values are not plotted on the map.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-3.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-4.png" width="672" /></p>
-<pre><code>## 8 &#39;0&#39; values are not plotted on the map.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-5.png" width="672" /></p>
-<pre><code>## 97 &#39;0&#39; values are not plotted on the map.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-6.png" width="672" /></p>
-<pre><code>## 18 &#39;0&#39; values are not plotted on the map.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-7.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-8.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-9.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-10.png" width="672" /></p>
-<pre><code>## 19 &#39;0&#39; values are not plotted on the map.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-11.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-12.png" width="672" /></p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="analyse-en-composantes-principales.html#cb100-1" tabindex="-1"></a><span class="fu">rm</span>(i)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">12</span><span class="op">:</span><span class="fl">23</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># mf_export(x = communes_voix ,</span></span>
+<span>  <span class="co">#           filename =paste0("TP09/cartes_candidats/carte_",names(communes_voix)[i],".png" ),</span></span>
+<span>  <span class="co">#           width = 900)</span></span>
+<span>  <span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">communes_voix</span>, col <span class="op">=</span> <span class="cn">NA</span>, border <span class="op">=</span> <span class="st">"gray25"</span>, lwd <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">departements_Paris</span>, col <span class="op">=</span> <span class="cn">NA</span>, border <span class="op">=</span> <span class="st">"gray25"</span>, lwd <span class="op">=</span> <span class="fl">1</span>, add<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">communes_voix</span> ,</span>
+<span>         var<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">communes_voix</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">communes_voix</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">+</span><span class="fl">12</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>         <span class="co">#val_max=max(unlist(communes_voix[,11:22])),</span></span>
+<span>         type<span class="op">=</span><span class="st">"prop_choro"</span>,</span>
+<span>         pal<span class="op">=</span><span class="st">"Viridis"</span>,</span>
+<span>         inches<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span>         add<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span>  <span class="co">#dev.off()</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<pre><code>## 184 '0' values are not plotted on the map.</code></pre>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-1.png" width="672"></div>
+<pre><code>## 101 '0' values are not plotted on the map.</code></pre>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-2.png" width="672"></div>
+<pre><code>## 42 '0' values are not plotted on the map.</code></pre>
+<p><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-3.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-4.png" width="672"></p>
+<pre><code>## 8 '0' values are not plotted on the map.</code></pre>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-5.png" width="672"></div>
+<pre><code>## 97 '0' values are not plotted on the map.</code></pre>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-6.png" width="672"></div>
+<pre><code>## 18 '0' values are not plotted on the map.</code></pre>
+<p><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-7.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-8.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-9.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-10.png" width="672"></p>
+<pre><code>## 19 '0' values are not plotted on the map.</code></pre>
+<p><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-11.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-52-12.png" width="672"></p>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="matrice-de-corrélation" class="section level3 hasAnchor" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> Matrice de corrélation<a href="analyse-en-composantes-principales.html#matrice-de-corrélation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="matrice-de-corrélation" class="section level3" number="2.3.2">
+<h3>
+<span class="header-section-number">2.3.2</span> Matrice de corrélation<a class="anchor" aria-label="anchor" href="#matrice-de-corr%C3%A9lation"><i class="fas fa-link"></i></a>
+</h3>
 <p>On peut réaliser une matrice de corrélation:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="analyse-en-composantes-principales.html#cb101-1" tabindex="-1"></a>cor.mat <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(data[,<span class="dv">20</span><span class="sc">:</span><span class="dv">31</span>], <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>),<span class="dv">2</span>) <span class="co"># round(,2) permet d&#39;arrondir à deux décimale et use=&quot;complete.obs&quot; permet d&#39;exclure les NA</span></span>
-<span id="cb101-2"><a href="analyse-en-composantes-principales.html#cb101-2" tabindex="-1"></a>cor.mat</span></code></pre></div>
-<pre><code>##              ARTHAUD POUTOU ROUSSEL MELENCHON JADOT HIDALGO
-## ARTHAUD         1.00   0.09    0.05      0.05 -0.16   -0.04
-## POUTOU          0.09   1.00    0.14      0.00 -0.06   -0.03
-## ROUSSEL         0.05   0.14    1.00      0.17 -0.01    0.12
-## MELENCHON       0.05   0.00    0.17      1.00 -0.15    0.11
-## JADOT          -0.16  -0.06   -0.01     -0.15  1.00    0.33
-## HIDALGO        -0.04  -0.03    0.12      0.11  0.33    1.00
-## LASSALLE        0.08   0.10    0.01     -0.35 -0.06   -0.07
-## MACRON         -0.29  -0.24   -0.22     -0.29  0.58    0.20
-## PECRESSE       -0.13  -0.07   -0.26     -0.54  0.06   -0.11
-## ZEMMOUR        -0.07  -0.13   -0.27     -0.53  0.10   -0.14
-## DUPONTAIGNAN    0.05   0.06    0.09     -0.29 -0.07   -0.11
-## MLEPEN          0.20   0.17    0.03     -0.40 -0.54   -0.31
-##              LASSALLE MACRON PECRESSE ZEMMOUR DUPONTAIGNAN
-## ARTHAUD          0.08  -0.29    -0.13   -0.07         0.05
-## POUTOU           0.10  -0.24    -0.07   -0.13         0.06
-## ROUSSEL          0.01  -0.22    -0.26   -0.27         0.09
-## MELENCHON       -0.35  -0.29    -0.54   -0.53        -0.29
-## JADOT           -0.06   0.58     0.06    0.10        -0.07
-## HIDALGO         -0.07   0.20    -0.11   -0.14        -0.11
-## LASSALLE         1.00  -0.17     0.08    0.14         0.16
-## MACRON          -0.17   1.00     0.25    0.25        -0.16
-## PECRESSE         0.08   0.25     1.00    0.32        -0.02
-## ZEMMOUR          0.14   0.25     0.32    1.00        -0.01
-## DUPONTAIGNAN     0.16  -0.16    -0.02   -0.01         1.00
-## MLEPEN           0.31  -0.68    -0.03   -0.03         0.29
-##              MLEPEN
-## ARTHAUD        0.20
-## POUTOU         0.17
-## ROUSSEL        0.03
-## MELENCHON     -0.40
-## JADOT         -0.54
-## HIDALGO       -0.31
-## LASSALLE       0.31
-## MACRON        -0.68
-## PECRESSE      -0.03
-## ZEMMOUR       -0.03
-## DUPONTAIGNAN   0.29
-## MLEPEN         1.00</code></pre>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cor.mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">data</span><span class="op">[</span>,<span class="fl">20</span><span class="op">:</span><span class="fl">31</span><span class="op">]</span>, use<span class="op">=</span><span class="st">"complete.obs"</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># round(,2) permet d'arrondir à deux décimale et use="complete.obs" permet d'exclure les NA</span></span>
+<span><span class="va">cor.mat</span></span></code></pre></div>
+<pre><code>##              ARTHAUD POUTOU ROUSSEL MELENCHON JADOT HIDALGO LASSALLE MACRON
+## ARTHAUD         1.00   0.09    0.05      0.05 -0.16   -0.04     0.08  -0.29
+## POUTOU          0.09   1.00    0.14      0.00 -0.06   -0.03     0.10  -0.24
+## ROUSSEL         0.05   0.14    1.00      0.17 -0.01    0.12     0.01  -0.22
+## MELENCHON       0.05   0.00    0.17      1.00 -0.15    0.11    -0.35  -0.29
+## JADOT          -0.16  -0.06   -0.01     -0.15  1.00    0.33    -0.06   0.58
+## HIDALGO        -0.04  -0.03    0.12      0.11  0.33    1.00    -0.07   0.20
+## LASSALLE        0.08   0.10    0.01     -0.35 -0.06   -0.07     1.00  -0.17
+## MACRON         -0.29  -0.24   -0.22     -0.29  0.58    0.20    -0.17   1.00
+## PECRESSE       -0.13  -0.07   -0.26     -0.54  0.06   -0.11     0.08   0.25
+## ZEMMOUR        -0.07  -0.13   -0.27     -0.53  0.10   -0.14     0.14   0.25
+## DUPONTAIGNAN    0.05   0.06    0.09     -0.29 -0.07   -0.11     0.16  -0.16
+## MLEPEN          0.20   0.17    0.03     -0.40 -0.54   -0.31     0.31  -0.68
+##              PECRESSE ZEMMOUR DUPONTAIGNAN MLEPEN
+## ARTHAUD         -0.13   -0.07         0.05   0.20
+## POUTOU          -0.07   -0.13         0.06   0.17
+## ROUSSEL         -0.26   -0.27         0.09   0.03
+## MELENCHON       -0.54   -0.53        -0.29  -0.40
+## JADOT            0.06    0.10        -0.07  -0.54
+## HIDALGO         -0.11   -0.14        -0.11  -0.31
+## LASSALLE         0.08    0.14         0.16   0.31
+## MACRON           0.25    0.25        -0.16  -0.68
+## PECRESSE         1.00    0.32        -0.02  -0.03
+## ZEMMOUR          0.32    1.00        -0.01  -0.03
+## DUPONTAIGNAN    -0.02   -0.01         1.00   0.29
+## MLEPEN          -0.03   -0.03         0.29   1.00</code></pre>
 <p>Le package corrplot permet de visualiser cette matrice de corrélation de façon plus intuitive:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="analyse-en-composantes-principales.html#cb103-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;corrplot&quot;</span>)</span>
-<span id="cb103-2"><a href="analyse-en-composantes-principales.html#cb103-2" tabindex="-1"></a><span class="fu">corrplot</span>(cor.mat, <span class="at">tl.col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/taiyun/corrplot">"corrplot"</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## corrplot 0.94 loaded</code></pre>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/corrplot/man/corrplot.html">corrplot</a></span><span class="op">(</span><span class="va">cor.mat</span>, tl.col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-54-1.png" width="672"></div>
 <p>On peut exporter le résultat avec la fonction png de la façon suivante:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="analyse-en-composantes-principales.html#cb104-1" tabindex="-1"></a><span class="co">#png(file=&quot;TP09/matrice_correlation.png&quot;, width = 1000, height = 1000)</span></span>
-<span id="cb104-2"><a href="analyse-en-composantes-principales.html#cb104-2" tabindex="-1"></a><span class="fu">corrplot</span>(cor.mat, <span class="at">tl.col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="analyse-en-composantes-principales.html#cb105-1" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#png(file="TP09/matrice_correlation.png", width = 1000, height = 1000)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/corrplot/man/corrplot.html">corrplot</a></span><span class="op">(</span><span class="va">cor.mat</span>, tl.col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-55-1.png" width="672"></div>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#dev.off()</span></span></code></pre></div>
 <p>On voit entre autres des corrélations :</p>
 <ul>
-<li><p>positives entre :</p>
+<li>
+<p>positives entre :</p>
 <ul>
 <li><p>le vote pour Hidalgo, Jadot et Macron,</p></li>
 <li><p>le vote Pécresse, Zemmour et Macron</p></li>
-</ul></li>
-<li><p>négative entre:</p>
+</ul>
+</li>
+<li>
+<p>négative entre:</p>
 <ul>
 <li><p>le vote Marine Le Pen et le vote Jadot-Macron</p></li>
 <li><p>le vote Mélanchon et le vote Pecresse-Zemmour</p></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>Très peu de corrélation entre les vote Zemmour et Marine Lepene.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="analyse-en-composantes-principales.html#cb106-1" tabindex="-1"></a><span class="fu">rm</span>(cor.mat)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">cor.mat</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="réaliser-lacp" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> Réaliser l’ACP<a href="analyse-en-composantes-principales.html#réaliser-lacp" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="une-acp-non-pondérée" class="section level3 hasAnchor" number="2.6.1">
-<h3><span class="header-section-number">2.6.1</span> Une ACP non pondérée<a href="analyse-en-composantes-principales.html#une-acp-non-pondérée" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="analyse-en-composantes-principales.html#cb107-1" tabindex="-1"></a>pca<span class="ot">&lt;-</span><span class="fu">PCA</span>(data[,<span class="dv">20</span><span class="sc">:</span><span class="dv">31</span>], <span class="at">graph=</span>T, <span class="at">ncp =</span> <span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-57-1.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-57-2.png" width="672" /></p>
+<div id="réaliser-lacp" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Réaliser l’ACP<a class="anchor" aria-label="anchor" href="#r%C3%A9aliser-lacp"><i class="fas fa-link"></i></a>
+</h2>
+<div id="une-acp-non-pondérée" class="section level3" number="2.4.1">
+<h3>
+<span class="header-section-number">2.4.1</span> Une ACP non pondérée<a class="anchor" aria-label="anchor" href="#une-acp-non-pond%C3%A9r%C3%A9e"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pca</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/FactoMineR/man/PCA.html">PCA</a></span><span class="op">(</span><span class="va">data</span><span class="op">[</span>,<span class="fl">20</span><span class="op">:</span><span class="fl">31</span><span class="op">]</span>, graph<span class="op">=</span><span class="cn">T</span>, ncp <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<p><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-57-1.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-57-2.png" width="672"></p>
 <p>L’objet pca est une liste dans lequel se trouve tous les résultats de l’ACP. On peut y accéder directement ou utiliser des fonctions préfaites pour visualiser les résultats:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="analyse-en-composantes-principales.html#cb108-1" tabindex="-1"></a><span class="co"># name               description</span></span>
-<span id="cb108-2"><a href="analyse-en-composantes-principales.html#cb108-2" tabindex="-1"></a><span class="co"># 1  &quot;$eig&quot;             &quot;eigenvalues&quot;</span></span>
-<span id="cb108-3"><a href="analyse-en-composantes-principales.html#cb108-3" tabindex="-1"></a><span class="co"># 2  &quot;$var&quot;             &quot;results for the variables&quot;</span></span>
-<span id="cb108-4"><a href="analyse-en-composantes-principales.html#cb108-4" tabindex="-1"></a><span class="co"># 3  &quot;$var$coord&quot;       &quot;coord. for the variables&quot;</span></span>
-<span id="cb108-5"><a href="analyse-en-composantes-principales.html#cb108-5" tabindex="-1"></a><span class="co"># 4  &quot;$var$cor&quot;         &quot;correlations variables - dimensions&quot;</span></span>
-<span id="cb108-6"><a href="analyse-en-composantes-principales.html#cb108-6" tabindex="-1"></a><span class="co"># 5  &quot;$var$cos2&quot;        &quot;cos2 for the variables&quot;</span></span>
-<span id="cb108-7"><a href="analyse-en-composantes-principales.html#cb108-7" tabindex="-1"></a><span class="co"># 6  &quot;$var$contrib&quot;     &quot;contributions of the variables&quot;</span></span>
-<span id="cb108-8"><a href="analyse-en-composantes-principales.html#cb108-8" tabindex="-1"></a><span class="co"># 7  &quot;$ind&quot;             &quot;results for the individuals&quot;</span></span>
-<span id="cb108-9"><a href="analyse-en-composantes-principales.html#cb108-9" tabindex="-1"></a><span class="co"># 8  &quot;$ind$coord&quot;       &quot;coord. for the individuals&quot;</span></span>
-<span id="cb108-10"><a href="analyse-en-composantes-principales.html#cb108-10" tabindex="-1"></a><span class="co"># 9  &quot;$ind$cos2&quot;        &quot;cos2 for the individuals&quot;</span></span>
-<span id="cb108-11"><a href="analyse-en-composantes-principales.html#cb108-11" tabindex="-1"></a><span class="co"># 10 &quot;$ind$contrib&quot;     &quot;contributions of the individuals&quot;</span></span>
-<span id="cb108-12"><a href="analyse-en-composantes-principales.html#cb108-12" tabindex="-1"></a><span class="co"># 11 &quot;$call&quot;            &quot;summary statistics&quot;</span></span>
-<span id="cb108-13"><a href="analyse-en-composantes-principales.html#cb108-13" tabindex="-1"></a><span class="co"># 12 &quot;$call$centre&quot;     &quot;mean of the variables&quot;</span></span>
-<span id="cb108-14"><a href="analyse-en-composantes-principales.html#cb108-14" tabindex="-1"></a><span class="co"># 13 &quot;$call$ecart.type&quot; &quot;standard error of the variables&quot;</span></span>
-<span id="cb108-15"><a href="analyse-en-composantes-principales.html#cb108-15" tabindex="-1"></a><span class="co"># 14 &quot;$call$row.w&quot;      &quot;weights for the individuals&quot;</span></span>
-<span id="cb108-16"><a href="analyse-en-composantes-principales.html#cb108-16" tabindex="-1"></a><span class="co"># 15 &quot;$call$col.w&quot;      &quot;weights for the variables&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># name               description</span></span>
+<span><span class="co"># 1  "$eig"             "eigenvalues"</span></span>
+<span><span class="co"># 2  "$var"             "results for the variables"</span></span>
+<span><span class="co"># 3  "$var$coord"       "coord. for the variables"</span></span>
+<span><span class="co"># 4  "$var$cor"         "correlations variables - dimensions"</span></span>
+<span><span class="co"># 5  "$var$cos2"        "cos2 for the variables"</span></span>
+<span><span class="co"># 6  "$var$contrib"     "contributions of the variables"</span></span>
+<span><span class="co"># 7  "$ind"             "results for the individuals"</span></span>
+<span><span class="co"># 8  "$ind$coord"       "coord. for the individuals"</span></span>
+<span><span class="co"># 9  "$ind$cos2"        "cos2 for the individuals"</span></span>
+<span><span class="co"># 10 "$ind$contrib"     "contributions of the individuals"</span></span>
+<span><span class="co"># 11 "$call"            "summary statistics"</span></span>
+<span><span class="co"># 12 "$call$centre"     "mean of the variables"</span></span>
+<span><span class="co"># 13 "$call$ecart.type" "standard error of the variables"</span></span>
+<span><span class="co"># 14 "$call$row.w"      "weights for the individuals"</span></span>
+<span><span class="co"># 15 "$call$col.w"      "weights for the variables"</span></span></code></pre></div>
 </div>
-<div id="pondérer-le-calcul-de-lacp" class="section level3 hasAnchor" number="2.6.2">
-<h3><span class="header-section-number">2.6.2</span> Pondérer le calcul de l’ACP<a href="analyse-en-composantes-principales.html#pondérer-le-calcul-de-lacp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pondérer-le-calcul-de-lacp" class="section level3" number="2.4.2">
+<h3>
+<span class="header-section-number">2.4.2</span> Pondérer le calcul de l’ACP<a class="anchor" aria-label="anchor" href="#pond%C3%A9rer-le-calcul-de-lacp"><i class="fas fa-link"></i></a>
+</h3>
 <p>Dans le cas précédent chacuns des individus à le même poid et chaque variable également. On peut décider de modifier les poids.</p>
 <p>Pourtant, il existe de grandes différences entre communes:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="analyse-en-composantes-principales.html#cb109-1" tabindex="-1"></a><span class="co"># mf_export(x = communes_voix ,</span></span>
-<span id="cb109-2"><a href="analyse-en-composantes-principales.html#cb109-2" tabindex="-1"></a><span class="co">#           filename =paste0(&quot;TP09/cartes_votes_exprimes.png&quot; ),</span></span>
-<span id="cb109-3"><a href="analyse-en-composantes-principales.html#cb109-3" tabindex="-1"></a><span class="co">#           width = 900)</span></span>
-<span id="cb109-4"><a href="analyse-en-composantes-principales.html#cb109-4" tabindex="-1"></a><span class="fu">mf_map</span>(<span class="at">x =</span> communes_voix, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;gray25&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.1</span>)</span>
-<span id="cb109-5"><a href="analyse-en-composantes-principales.html#cb109-5" tabindex="-1"></a><span class="fu">mf_map</span>(<span class="at">x =</span> departements_Paris, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;gray25&quot;</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">add=</span>T)</span>
-<span id="cb109-6"><a href="analyse-en-composantes-principales.html#cb109-6" tabindex="-1"></a><span class="fu">mf_map</span>(communes_voix ,</span>
-<span id="cb109-7"><a href="analyse-en-composantes-principales.html#cb109-7" tabindex="-1"></a>       <span class="at">var=</span> <span class="st">&quot;exprimes&quot;</span>,</span>
-<span id="cb109-8"><a href="analyse-en-composantes-principales.html#cb109-8" tabindex="-1"></a>       <span class="at">type=</span><span class="st">&quot;prop&quot;</span>,</span>
-<span id="cb109-9"><a href="analyse-en-composantes-principales.html#cb109-9" tabindex="-1"></a>       <span class="at">inches=</span><span class="fl">0.1</span>,</span>
-<span id="cb109-10"><a href="analyse-en-composantes-principales.html#cb109-10" tabindex="-1"></a>       <span class="at">add=</span>T)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="analyse-en-composantes-principales.html#cb110-1" tabindex="-1"></a><span class="co">#dev.off()</span></span>
-<span id="cb110-2"><a href="analyse-en-composantes-principales.html#cb110-2" tabindex="-1"></a><span class="fu">rm</span>(communes_voix)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># mf_export(x = communes_voix ,</span></span>
+<span><span class="co">#           filename =paste0("TP09/cartes_votes_exprimes.png" ),</span></span>
+<span><span class="co">#           width = 900)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">communes_voix</span>, col <span class="op">=</span> <span class="cn">NA</span>, border <span class="op">=</span> <span class="st">"gray25"</span>, lwd <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">departements_Paris</span>, col <span class="op">=</span> <span class="cn">NA</span>, border <span class="op">=</span> <span class="st">"gray25"</span>, lwd <span class="op">=</span> <span class="fl">1</span>, add<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">communes_voix</span> ,</span>
+<span>       var<span class="op">=</span> <span class="st">"exprimes"</span>,</span>
+<span>       type<span class="op">=</span><span class="st">"prop"</span>,</span>
+<span>       inches<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span>       add<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-59-1.png" width="672"></div>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#dev.off()</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">communes_voix</span><span class="op">)</span></span></code></pre></div>
 <p>Si on souhaite pondérer les entités on peut utiliser “row.w =”:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="analyse-en-composantes-principales.html#cb111-1" tabindex="-1"></a>pca<span class="ot">&lt;-</span><span class="fu">PCA</span>(data[,<span class="dv">20</span><span class="sc">:</span><span class="dv">31</span>], <span class="at">row.w =</span>data<span class="sc">$</span>exprimes,<span class="at">ncp =</span> <span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-60-1.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-60-2.png" width="672" /></p>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pca</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/FactoMineR/man/PCA.html">PCA</a></span><span class="op">(</span><span class="va">data</span><span class="op">[</span>,<span class="fl">20</span><span class="op">:</span><span class="fl">31</span><span class="op">]</span>, row.w <span class="op">=</span><span class="va">data</span><span class="op">$</span><span class="va">exprimes</span>,ncp <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<p><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-60-1.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-60-2.png" width="672"></p>
 <p>Pour pondérer les variables on peut utiliser col.w Attention: pour pondérer, il faut que tous les poids soient &gt;0. Dans le cas présent ça ne pose pas de problème.</p>
 </div>
 </div>
-<div id="visualiser-les-résultats" class="section level2 hasAnchor" number="2.7">
-<h2><span class="header-section-number">2.7</span> Visualiser les résultats<a href="analyse-en-composantes-principales.html#visualiser-les-résultats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="cercles-de-corrélation" class="section level3 hasAnchor" number="2.7.1">
-<h3><span class="header-section-number">2.7.1</span> Cercles de corrélation<a href="analyse-en-composantes-principales.html#cercles-de-corrélation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="visualiser-les-résultats" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> Visualiser les résultats<a class="anchor" aria-label="anchor" href="#visualiser-les-r%C3%A9sultats"><i class="fas fa-link"></i></a>
+</h2>
+<div id="cercles-de-corrélation" class="section level3" number="2.5.1">
+<h3>
+<span class="header-section-number">2.5.1</span> Cercles de corrélation<a class="anchor" aria-label="anchor" href="#cercles-de-corr%C3%A9lation"><i class="fas fa-link"></i></a>
+</h3>
 <p>Ce résultat sont stocker dans l’objet pca:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="analyse-en-composantes-principales.html#cb112-1" tabindex="-1"></a>pca<span class="sc">$</span>var<span class="sc">$</span>coord</span></code></pre></div>
-<pre><code>##                    Dim.1        Dim.2        Dim.3
-## ARTHAUD       0.75783970  0.193700662  0.053886556
-## POUTOU        0.70415312  0.004765184  0.418058777
-## ROUSSEL       0.66687033 -0.124984377  0.299327347
-## MELENCHON     0.74370403 -0.538863968 -0.340415783
-## JADOT        -0.45229731 -0.533488252  0.663311687
-## HIDALGO      -0.10246245 -0.687312206  0.620349032
-## LASSALLE      0.07686699  0.764044366  0.449976355
-## MACRON       -0.94011924 -0.048504652  0.166318959
-## PECRESSE     -0.88585300  0.321419606 -0.009943942
-## ZEMMOUR      -0.79129943  0.372205374 -0.100007056
-## DUPONTAIGNAN  0.19419953  0.681063286  0.357058840
-## MLEPEN        0.45088539  0.809295495  0.102917819
-##                    Dim.4       Dim.5        Dim.6
-## ARTHAUD      -0.33202051  0.22476966 -0.270976655
-## POUTOU       -0.07460159  0.23692366  0.499863557
-## ROUSSEL       0.62640195  0.14923271 -0.131302409
-## MELENCHON    -0.02007377 -0.09595007  0.007735581
-## JADOT        -0.03924331 -0.01890221 -0.069747306
-## HIDALGO      -0.17878940 -0.04634065 -0.040984394
-## LASSALLE     -0.03134172  0.14026444 -0.191952534
-## MACRON        0.02380460  0.02352660 -0.043682377
-## PECRESSE      0.04293183  0.14109764  0.017812438
-## ZEMMOUR       0.06375980  0.19413646  0.158100636
-## DUPONTAIGNAN  0.04326915 -0.55375208  0.082126654
-## MLEPEN       -0.06620236  0.04182531 -0.004296971
-##                    Dim.7       Dim.8         Dim.9
-## ARTHAUD       0.38461093 -0.05343325 -0.0045179775
-## POUTOU        0.02458871 -0.12931404 -0.0007009491
-## ROUSSEL       0.12543543  0.02976306 -0.0269964797
-## MELENCHON    -0.03917968 -0.02553644  0.1644913917
-## JADOT         0.01101491 -0.04680005 -0.0019169799
-## HIDALGO      -0.01196939  0.24982650  0.0054539159
-## LASSALLE     -0.29553028 -0.08181916  0.2339225539
-## MACRON        0.04938810 -0.18414230 -0.1216818436
-## PECRESSE      0.11278338 -0.11425240 -0.0094676328
-## ZEMMOUR       0.20993077  0.27169444  0.1793777244
-## DUPONTAIGNAN  0.22599626 -0.03151295  0.0577028315
-## MLEPEN       -0.15138365  0.19561196 -0.2456237780
-##                    Dim.10        Dim.11       Dim.12
-## ARTHAUD      -0.008370156 -0.0140271624 3.282270e-10
-## POUTOU        0.015475982 -0.0156209607 3.891439e-10
-## ROUSSEL       0.028203308 -0.0056358853 1.336890e-09
-## MELENCHON     0.010914950  0.0401760796 2.360485e-08
-## JADOT        -0.225853682  0.1036719950 3.831603e-09
-## HIDALGO       0.183340122 -0.0166654983 1.030643e-09
-## LASSALLE      0.025984130 -0.0303200827 9.593980e-10
-## MACRON        0.031798367 -0.1759761971 1.521580e-08
-## PECRESSE      0.152069481  0.2019841257 5.393004e-09
-## ZEMMOUR      -0.079291052 -0.0469535055 5.553946e-09
-## DUPONTAIGNAN  0.017115750  0.0000869299 1.563518e-09
-## MLEPEN       -0.040599884  0.0428961375 1.323804e-08</code></pre>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pca</span><span class="op">$</span><span class="va">var</span><span class="op">$</span><span class="va">coord</span></span></code></pre></div>
+<pre><code>##                    Dim.1        Dim.2        Dim.3       Dim.4       Dim.5
+## ARTHAUD       0.75783970  0.193700662  0.053886556 -0.33202051  0.22476966
+## POUTOU        0.70415312  0.004765184  0.418058777 -0.07460159  0.23692366
+## ROUSSEL       0.66687033 -0.124984377  0.299327347  0.62640195  0.14923271
+## MELENCHON     0.74370403 -0.538863968 -0.340415783 -0.02007377 -0.09595007
+## JADOT        -0.45229731 -0.533488252  0.663311687 -0.03924331 -0.01890221
+## HIDALGO      -0.10246245 -0.687312206  0.620349032 -0.17878940 -0.04634065
+## LASSALLE      0.07686699  0.764044366  0.449976355 -0.03134172  0.14026444
+## MACRON       -0.94011924 -0.048504652  0.166318959  0.02380460  0.02352660
+## PECRESSE     -0.88585300  0.321419606 -0.009943942  0.04293183  0.14109764
+## ZEMMOUR      -0.79129943  0.372205374 -0.100007056  0.06375980  0.19413646
+## DUPONTAIGNAN  0.19419953  0.681063286  0.357058840  0.04326915 -0.55375208
+## MLEPEN        0.45088539  0.809295495  0.102917819 -0.06620236  0.04182531
+##                     Dim.6       Dim.7       Dim.8         Dim.9       Dim.10
+## ARTHAUD      -0.270976655  0.38461093 -0.05343325 -0.0045179775 -0.008370156
+## POUTOU        0.499863557  0.02458871 -0.12931404 -0.0007009491  0.015475982
+## ROUSSEL      -0.131302409  0.12543543  0.02976306 -0.0269964797  0.028203308
+## MELENCHON     0.007735581 -0.03917968 -0.02553644  0.1644913917  0.010914950
+## JADOT        -0.069747306  0.01101491 -0.04680005 -0.0019169799 -0.225853682
+## HIDALGO      -0.040984394 -0.01196939  0.24982650  0.0054539159  0.183340122
+## LASSALLE     -0.191952534 -0.29553028 -0.08181916  0.2339225539  0.025984130
+## MACRON       -0.043682377  0.04938810 -0.18414230 -0.1216818436  0.031798367
+## PECRESSE      0.017812438  0.11278338 -0.11425240 -0.0094676328  0.152069481
+## ZEMMOUR       0.158100636  0.20993077  0.27169444  0.1793777244 -0.079291052
+## DUPONTAIGNAN  0.082126654  0.22599626 -0.03151295  0.0577028315  0.017115750
+## MLEPEN       -0.004296971 -0.15138365  0.19561196 -0.2456237780 -0.040599884
+##                     Dim.11       Dim.12
+## ARTHAUD      -0.0140271624 3.282270e-10
+## POUTOU       -0.0156209607 3.891439e-10
+## ROUSSEL      -0.0056358853 1.336890e-09
+## MELENCHON     0.0401760796 2.360485e-08
+## JADOT         0.1036719950 3.831603e-09
+## HIDALGO      -0.0166654983 1.030643e-09
+## LASSALLE     -0.0303200827 9.593980e-10
+## MACRON       -0.1759761971 1.521580e-08
+## PECRESSE      0.2019841257 5.393004e-09
+## ZEMMOUR      -0.0469535055 5.553946e-09
+## DUPONTAIGNAN  0.0000869299 1.563518e-09
+## MLEPEN        0.0428961375 1.323804e-08</code></pre>
 <p>Les cercle de corrélation permettent de visualiser entre les variables et les dimensions produites par l’ACP.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="analyse-en-composantes-principales.html#cb114-1" tabindex="-1"></a>cercle_1_2<span class="ot">&lt;-</span><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))<span class="sc">+</span></span>
-<span id="cb114-2"><a href="analyse-en-composantes-principales.html#cb114-2" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb114-3"><a href="analyse-en-composantes-principales.html#cb114-3" tabindex="-1"></a>cercle_1_2</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="analyse-en-composantes-principales.html#cb115-1" tabindex="-1"></a><span class="co">#ggsave(cercle_1_2,filename=&quot;TP09/cercle_correlation_1_2.png&quot;, width=7, height=7, bg=&quot;white&quot;)</span></span>
-<span id="cb115-2"><a href="analyse-en-composantes-principales.html#cb115-2" tabindex="-1"></a><span class="co">#rm(cercle_1_2)</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cercle_1_2</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">cercle_1_2</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-62-1.png" width="672"></div>
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#ggsave(cercle_1_2,filename="TP09/cercle_correlation_1_2.png", width=7, height=7, bg="white")</span></span>
+<span><span class="co">#rm(cercle_1_2)</span></span></code></pre></div>
 <p>On peut décider de visualiser d’autres axes en modifiant le paramètre axes:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="analyse-en-composantes-principales.html#cb116-1" tabindex="-1"></a>cercle_1_3<span class="ot">&lt;-</span><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))<span class="sc">+</span></span>
-<span id="cb116-2"><a href="analyse-en-composantes-principales.html#cb116-2" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb116-3"><a href="analyse-en-composantes-principales.html#cb116-3" tabindex="-1"></a>cercle_1_3</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="analyse-en-composantes-principales.html#cb117-1" tabindex="-1"></a><span class="co">#ggsave(cercle_1_3,filename=&quot;TP09/cercle_correlation_1_3.png&quot;, width=7, height=7, bg=&quot;white&quot;)</span></span>
-<span id="cb117-2"><a href="analyse-en-composantes-principales.html#cb117-2" tabindex="-1"></a><span class="co">#rm(cercle_1_3)</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cercle_1_3</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">cercle_1_3</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-63-1.png" width="672"></div>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#ggsave(cercle_1_3,filename="TP09/cercle_correlation_1_3.png", width=7, height=7, bg="white")</span></span>
+<span><span class="co">#rm(cercle_1_3)</span></span></code></pre></div>
 <p>Pour faciliter la lecture, on peut inverser un axe en multipliant par -1 (dans notre cas, il est plus intuitif d’avoir la gauche politique à gauche et la droite à droite):</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="analyse-en-composantes-principales.html#cb118-1" tabindex="-1"></a>pca<span class="sc">$</span>var<span class="sc">$</span>coord[,<span class="dv">1</span>]<span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>pca<span class="sc">$</span>var<span class="sc">$</span>coord[,<span class="dv">1</span>]</span>
-<span id="cb118-2"><a href="analyse-en-composantes-principales.html#cb118-2" tabindex="-1"></a></span>
-<span id="cb118-3"><a href="analyse-en-composantes-principales.html#cb118-3" tabindex="-1"></a>cercle_1_2<span class="ot">&lt;-</span><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) )<span class="sc">+</span></span>
-<span id="cb118-4"><a href="analyse-en-composantes-principales.html#cb118-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb118-5"><a href="analyse-en-composantes-principales.html#cb118-5" tabindex="-1"></a>cercle_1_2</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="analyse-en-composantes-principales.html#cb119-1" tabindex="-1"></a><span class="co">#ggsave(cercle_1_2,filename=&quot;TP09/cercle_correlation_1_2.png&quot;, width=7, height=7, bg=&quot;white&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pca</span><span class="op">$</span><span class="va">var</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span> <span class="op">-</span><span class="fl">1</span><span class="op">*</span><span class="va">pca</span><span class="op">$</span><span class="va">var</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">cercle_1_2</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">cercle_1_2</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-64-1.png" width="672"></div>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#ggsave(cercle_1_2,filename="TP09/cercle_correlation_1_2.png", width=7, height=7, bg="white")</span></span></code></pre></div>
 <p>Il faut alors aussi le faire sur les coordonnées des individus:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="analyse-en-composantes-principales.html#cb120-1" tabindex="-1"></a>pca<span class="sc">$</span>ind<span class="sc">$</span>coord[,<span class="dv">1</span>]<span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span> pca<span class="sc">$</span>ind<span class="sc">$</span>coord[,<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span> <span class="op">-</span><span class="fl">1</span><span class="op">*</span> <span class="va">pca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></span></code></pre></div>
 <p>On peut décider de ne pas afficher toutes les variables (si il y en a trop ça devient illisible). Ici, on décide d’afficher surtout (en modifiant la tranparance) celles qui ont le plus contribué à la construction de les deux axes (alpha.var=“contrib”) ou celle qui sont le plus prise en compte par les deux axes (alpha.var=“cos2”), soit encore de sélectionner celles qui ont un cos2 supérieur à un seuil (select.var = list(cos2 = 0.75) ) ou les 3 qui contribuent le plus (select.var = list(contrib = 3))):</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="analyse-en-composantes-principales.html#cb121-1" tabindex="-1"></a><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">alpha.var=</span><span class="st">&quot;contrib&quot;</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="analyse-en-composantes-principales.html#cb122-1" tabindex="-1"></a><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">alpha.var=</span><span class="st">&quot;cos2&quot;</span>)<span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-66-2.png" width="672" /></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="analyse-en-composantes-principales.html#cb123-1" tabindex="-1"></a><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">select.var =</span> <span class="fu">list</span>(<span class="at">cos2 =</span> <span class="fl">0.75</span>))<span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-66-3.png" width="672" /></p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="analyse-en-composantes-principales.html#cb124-1" tabindex="-1"></a><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">select.var =</span> <span class="fu">list</span>(<span class="at">contrib =</span> <span class="dv">3</span>))<span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-66-4.png" width="672" /></p>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, alpha.var<span class="op">=</span><span class="st">"contrib"</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-66-1.png" width="672"></div>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, alpha.var<span class="op">=</span><span class="st">"cos2"</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-66-2.png" width="672"></div>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, select.var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>cos2 <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-66-3.png" width="672"></div>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, select.var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>contrib <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-66-4.png" width="672"></div>
 <p>Il est peut aussi être pertinent d’utiliser l’argument repel=T pour utiliser le package repel pour les étiquettes et éviter qu’elle ne se chevauches:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="analyse-en-composantes-principales.html#cb125-1" tabindex="-1"></a><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">repel=</span>T )<span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, repel<span class="op">=</span><span class="cn">T</span> <span class="op">)</span><span class="op">+</span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-67-1.png" width="672"></div>
 </div>
-<div id="contributions-de-chaque-variables" class="section level3 hasAnchor" number="2.7.2">
-<h3><span class="header-section-number">2.7.2</span> Contributions de chaque variables<a href="analyse-en-composantes-principales.html#contributions-de-chaque-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="contributions-de-chaque-variables" class="section level3" number="2.5.2">
+<h3>
+<span class="header-section-number">2.5.2</span> Contributions de chaque variables<a class="anchor" aria-label="anchor" href="#contributions-de-chaque-variables"><i class="fas fa-link"></i></a>
+</h3>
 <p>La contribution de chaque variable à la construction de chacune de dimension:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="analyse-en-composantes-principales.html#cb126-1" tabindex="-1"></a>pca<span class="sc">$</span>var<span class="sc">$</span>contrib</span></code></pre></div>
-<pre><code>##                   Dim.1        Dim.2        Dim.3
-## ARTHAUD      11.9038406 1.231246e+00  0.183052896
-## POUTOU       10.2770061 7.451467e-04 11.017687192
-## ROUSSEL       9.2175433 5.126181e-01  5.648180142
-## MELENCHON    11.4639072 9.528856e+00  7.305250657
-## JADOT         4.2401420 9.339684e+00 27.736460944
-## HIDALGO       0.2176015 1.550210e+01 24.259841866
-## LASSALLE      0.1224650 1.915665e+01 12.764245064
-## MACRON       18.3188531 7.720568e-02  1.743810408
-## PECRESSE     16.2650617 3.390215e+00  0.006233513
-## ZEMMOUR      12.9781893 4.546192e+00  0.630488306
-## DUPONTAIGNAN  0.7816796 1.522150e+01  8.037025154
-## MLEPEN        4.2137107 2.149298e+01  0.667723858
-##                    Dim.4       Dim.5        Dim.6
-## ARTHAUD      19.83392132  9.58930308 17.567987257
-## POUTOU        1.00132471 10.65438844 59.780728472
-## ROUSSEL      70.59679126  4.22707266  4.124807104
-## MELENCHON     0.07249975  1.74743980  0.014316739
-## JADOT         0.27708309  0.06781672  1.163893177
-## HIDALGO       5.75125091  0.40760167  0.401878970
-## LASSALLE      0.17673574  3.73427942  8.815479728
-## MACRON        0.10195308  0.10505823  0.456531526
-## PECRESSE      0.33161753  3.77877609  0.075911050
-## ZEMMOUR       0.73142974  7.15362007  5.980334606
-## DUPONTAIGNAN  0.33684917 58.20260409  1.613713804
-## MLEPEN        0.78854370  0.33203971  0.004417566
-##                    Dim.7      Dim.8        Dim.9      Dim.10
-## ARTHAUD      38.26088046  1.1309610 1.056017e-02  0.05892929
-## POUTOU        0.15638066  6.6239329 2.541885e-04  0.20145614
-## ROUSSEL       4.06960429  0.3508970 3.770484e-01  0.66905864
-## MELENCHON     0.39703930  0.2583124 1.399810e+01  0.10020919
-## JADOT         0.03138149  0.8675954 1.901157e-03 42.90604037
-## HIDALGO       0.03705574 24.7230208 1.538862e-02 28.27347030
-## LASSALLE     22.58997116  2.6517620 2.830917e+01  0.56791122
-## MACRON        0.63089386 13.4317208 7.660100e+00  0.85049882
-## PECRESSE      3.29004564  5.1707694 4.637305e-02 19.45128139
-## ZEMMOUR      11.39892589 29.2405834 1.664638e+01  5.28825575
-## DUPONTAIGNAN 13.21034744  0.3933712 1.722571e+00  0.24640866
-## MLEPEN        5.92747407 15.1570737 3.121215e+01  1.38648022
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pca</span><span class="op">$</span><span class="va">var</span><span class="op">$</span><span class="va">contrib</span></span></code></pre></div>
+<pre><code>##                   Dim.1        Dim.2        Dim.3       Dim.4       Dim.5
+## ARTHAUD      11.9038406 1.231246e+00  0.183052896 19.83392132  9.58930308
+## POUTOU       10.2770061 7.451467e-04 11.017687192  1.00132471 10.65438844
+## ROUSSEL       9.2175433 5.126181e-01  5.648180142 70.59679126  4.22707266
+## MELENCHON    11.4639072 9.528856e+00  7.305250657  0.07249975  1.74743980
+## JADOT         4.2401420 9.339684e+00 27.736460944  0.27708309  0.06781672
+## HIDALGO       0.2176015 1.550210e+01 24.259841866  5.75125091  0.40760167
+## LASSALLE      0.1224650 1.915665e+01 12.764245064  0.17673574  3.73427942
+## MACRON       18.3188531 7.720568e-02  1.743810408  0.10195308  0.10505823
+## PECRESSE     16.2650617 3.390215e+00  0.006233513  0.33161753  3.77877609
+## ZEMMOUR      12.9781893 4.546192e+00  0.630488306  0.73142974  7.15362007
+## DUPONTAIGNAN  0.7816796 1.522150e+01  8.037025154  0.33684917 58.20260409
+## MLEPEN        4.2137107 2.149298e+01  0.667723858  0.78854370  0.33203971
+##                     Dim.6       Dim.7      Dim.8        Dim.9      Dim.10
+## ARTHAUD      17.567987257 38.26088046  1.1309610 1.056017e-02  0.05892929
+## POUTOU       59.780728472  0.15638066  6.6239329 2.541885e-04  0.20145614
+## ROUSSEL       4.124807104  4.06960429  0.3508970 3.770484e-01  0.66905864
+## MELENCHON     0.014316739  0.39703930  0.2583124 1.399810e+01  0.10020919
+## JADOT         1.163893177  0.03138149  0.8675954 1.901157e-03 42.90604037
+## HIDALGO       0.401878970  0.03705574 24.7230208 1.538862e-02 28.27347030
+## LASSALLE      8.815479728 22.58997116  2.6517620 2.830917e+01  0.56791122
+## MACRON        0.456531526  0.63089386 13.4317208 7.660100e+00  0.85049882
+## PECRESSE      0.075911050  3.29004564  5.1707694 4.637305e-02 19.45128139
+## ZEMMOUR       5.980334606 11.39892589 29.2405834 1.664638e+01  5.28825575
+## DUPONTAIGNAN  1.613713804 13.21034744  0.3933712 1.722571e+00  0.24640866
+## MLEPEN        0.004417566  5.92747407 15.1570737 3.121215e+01  1.38648022
 ##                    Dim.11      Dim.12
 ## ARTHAUD      2.190093e-01  0.01030897
 ## POUTOU       2.716054e-01  0.01449063
@@ -706,267 +568,292 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## DUPONTAIGNAN 8.411265e-06  0.23392274
 ## MLEPEN       2.048139e+00 16.76926331</code></pre>
 <p>On peut également afficher de façon graphique avec fviz_contrib:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="analyse-en-composantes-principales.html#cb128-1" tabindex="-1"></a><span class="fu">fviz_contrib</span>(pca, <span class="at">choice =</span> <span class="st">&quot;var&quot;</span>, <span class="at">axes =</span> <span class="dv">1</span>, <span class="at">top =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="analyse-en-composantes-principales.html#cb129-1" tabindex="-1"></a><span class="fu">fviz_contrib</span>(pca, <span class="at">choice =</span> <span class="st">&quot;var&quot;</span>, <span class="at">axes =</span> <span class="dv">2</span>, <span class="at">top =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-69-2.png" width="672" /></p>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_contrib.html">fviz_contrib</a></span><span class="op">(</span><span class="va">pca</span>, choice <span class="op">=</span> <span class="st">"var"</span>, axes <span class="op">=</span> <span class="fl">1</span>, top <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-69-1.png" width="672"></div>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_contrib.html">fviz_contrib</a></span><span class="op">(</span><span class="va">pca</span>, choice <span class="op">=</span> <span class="st">"var"</span>, axes <span class="op">=</span> <span class="fl">2</span>, top <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-69-2.png" width="672"></div>
 </div>
-<div id="valeurs-propres-et-de-la-variance-expliquée" class="section level3 hasAnchor" number="2.7.3">
-<h3><span class="header-section-number">2.7.3</span> Valeurs propres et % de la variance expliquée<a href="analyse-en-composantes-principales.html#valeurs-propres-et-de-la-variance-expliquée" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="valeurs-propres-et-de-la-variance-expliquée" class="section level3" number="2.5.3">
+<h3>
+<span class="header-section-number">2.5.3</span> Valeurs propres et % de la variance expliquée<a class="anchor" aria-label="anchor" href="#valeurs-propres-et-de-la-variance-expliqu%C3%A9e"><i class="fas fa-link"></i></a>
+</h3>
 <p>Pour afficher les valeurs propres (eigen value) et le pourcentage de variance expliquée, on peut simplement afficher le tableau compris dans l’objet pca</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="analyse-en-composantes-principales.html#cb130-1" tabindex="-1"></a>pca<span class="sc">$</span>eig</span></code></pre></div>
-<pre><code>##           eigenvalue percentage of variance
-## comp 1  4.824670e+00           4.020558e+01
-## comp 2  3.047316e+00           2.539430e+01
-## comp 3  1.586296e+00           1.321913e+01
-## comp 4  5.558034e-01           4.631695e+00
-## comp 5  5.268516e-01           4.390430e+00
-## comp 6  4.179668e-01           3.483056e+00
-## comp 7  3.866235e-01           3.221863e+00
-## comp 8  2.524500e-01           2.103750e+00
-## comp 9  1.932934e-01           1.610779e+00
-## comp 10 1.188874e-01           9.907285e-01
-## comp 11 8.984151e-02           7.486793e-01
-## comp 12 1.045041e-15           8.708673e-15
-##         cumulative percentage of variance
-## comp 1                           40.20558
-## comp 2                           65.59988
-## comp 3                           78.81902
-## comp 4                           83.45071
-## comp 5                           87.84114
-## comp 6                           91.32420
-## comp 7                           94.54606
-## comp 8                           96.64981
-## comp 9                           98.26059
-## comp 10                          99.25132
-## comp 11                         100.00000
-## comp 12                         100.00000</code></pre>
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pca</span><span class="op">$</span><span class="va">eig</span></span></code></pre></div>
+<pre><code>##           eigenvalue percentage of variance cumulative percentage of variance
+## comp 1  4.824670e+00           4.020558e+01                          40.20558
+## comp 2  3.047316e+00           2.539430e+01                          65.59988
+## comp 3  1.586296e+00           1.321913e+01                          78.81902
+## comp 4  5.558034e-01           4.631695e+00                          83.45071
+## comp 5  5.268516e-01           4.390430e+00                          87.84114
+## comp 6  4.179668e-01           3.483056e+00                          91.32420
+## comp 7  3.866235e-01           3.221863e+00                          94.54606
+## comp 8  2.524500e-01           2.103750e+00                          96.64981
+## comp 9  1.932934e-01           1.610779e+00                          98.26059
+## comp 10 1.188874e-01           9.907285e-01                          99.25132
+## comp 11 8.984151e-02           7.486793e-01                         100.00000
+## comp 12 1.045041e-15           8.708673e-15                         100.00000</code></pre>
 <p>On peut faire un graphique de la variance expliquées:</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="analyse-en-composantes-principales.html#cb132-1" tabindex="-1"></a><span class="fu">fviz_screeplot</span>(pca, <span class="at">ncp=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/eigenvalue.html">fviz_screeplot</a></span><span class="op">(</span><span class="va">pca</span>, ncp<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-71-1.png" width="672"></div>
 <p>Ces informations sont utiles pour nous aider à décider combien de composante retenir. Généralement, on s’arrange avec ces règles non-strictes: - eigenvalue &gt; 1 - variance cumulée &gt; 70% - gain faible d’une composante supplémentaire (ajouter une dimension supplémentaire ne permet pas de gagner beaucoup en variance expliquée)</p>
 </div>
-<div id="carte-de-scores" class="section level3 hasAnchor" number="2.7.4">
-<h3><span class="header-section-number">2.7.4</span> Carte de scores<a href="analyse-en-composantes-principales.html#carte-de-scores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="carte-de-scores" class="section level3" number="2.5.4">
+<h3>
+<span class="header-section-number">2.5.4</span> Carte de scores<a class="anchor" aria-label="anchor" href="#carte-de-scores"><i class="fas fa-link"></i></a>
+</h3>
 <p>Chaque individus est reprojeter sur les nouvelles dimensions. Leurs scores sont stocké dans l’objet pca:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="analyse-en-composantes-principales.html#cb133-1" tabindex="-1"></a><span class="fu">head</span>(pca<span class="sc">$</span>ind<span class="sc">$</span>coord)</span></code></pre></div>
-<pre><code>##      Dim.1      Dim.2       Dim.3        Dim.4       Dim.5
-## 1 3.067555 -1.7114152  0.08150264 -0.185735850 -0.41247012
-## 2 2.511828 -2.7064534  0.70245008 -0.193923389 -0.70891924
-## 3 2.031107 -3.0966114  1.07311078 -0.404287195 -0.18691460
-## 4 2.201343 -2.4124210  1.18680228 -0.001301227 -0.20907736
-## 5 1.991101 -2.2577563  1.02941720 -0.014047196 -0.02204558
-## 6 3.955340 -0.8826657 -0.20675170  0.106337247  0.01854102
-##        Dim.6       Dim.7       Dim.8      Dim.9      Dim.10
-## 1 -0.1498315 -0.31386218  0.51897558 -0.4392267  0.16799431
-## 2 -0.4567220 -0.53505432  0.36256495 -0.6205415 -0.13143940
-## 3 -0.5270521 -0.32566793  0.04083631 -0.7457277 -0.17322620
-## 4  0.2881203 -0.18494092  0.55795434 -0.3835738  0.18158093
-## 5 -0.1995434 -0.07027549  0.24404548 -0.1594431  0.07828135
-## 6 -0.1812643  0.07415939 -0.23014907 -0.3167121  0.16569411
-##        Dim.11        Dim.12
-## 1 -0.45550607 -2.122990e-09
-## 2 -0.64944655 -2.768542e-09
-## 3 -0.51307636 -6.765777e-09
-## 4 -0.51829968 -1.631543e-09
-## 5 -0.03678451 -1.845831e-09
-## 6 -0.35174294 -2.268829e-09</code></pre>
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##      Dim.1      Dim.2       Dim.3        Dim.4       Dim.5      Dim.6
+## 1 3.067555 -1.7114152  0.08150264 -0.185735850 -0.41247012 -0.1498315
+## 2 2.511828 -2.7064534  0.70245008 -0.193923389 -0.70891924 -0.4567220
+## 3 2.031107 -3.0966114  1.07311078 -0.404287195 -0.18691460 -0.5270521
+## 4 2.201343 -2.4124210  1.18680228 -0.001301227 -0.20907736  0.2881203
+## 5 1.991101 -2.2577563  1.02941720 -0.014047196 -0.02204558 -0.1995434
+## 6 3.955340 -0.8826657 -0.20675170  0.106337247  0.01854102 -0.1812643
+##         Dim.7       Dim.8      Dim.9      Dim.10      Dim.11        Dim.12
+## 1 -0.31386218  0.51897558 -0.4392267  0.16799431 -0.45550607 -2.122990e-09
+## 2 -0.53505432  0.36256495 -0.6205415 -0.13143940 -0.64944655 -2.768542e-09
+## 3 -0.32566793  0.04083631 -0.7457277 -0.17322620 -0.51307636 -6.765777e-09
+## 4 -0.18494092  0.55795434 -0.3835738  0.18158093 -0.51829968 -1.631543e-09
+## 5 -0.07027549  0.24404548 -0.1594431  0.07828135 -0.03678451 -1.845831e-09
+## 6  0.07415939 -0.23014907 -0.3167121  0.16569411 -0.35174294 -2.268829e-09</code></pre>
 <p>On peut souhaiter les visualiser dans un graphique à deux dimensions:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="analyse-en-composantes-principales.html#cb135-1" tabindex="-1"></a><span class="fu">fviz_pca_ind</span>(pca)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_ind</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-73-1.png" width="672"></div>
 <p>Forcément cela à du sens que si on a peu d’individus. Si les individus sont des entités géographiques, on peut souhaiter en faire des cartes.</p>
 <p>On peut récupérer les score de chaque individus en collant avec bind_rows les coordonnées avec le set de données initiale. On doit utiliser ici bind_rows plutôt qu’une jointure (left_join, right_join) parce que l’agorythme de FactoMineR ne conserve pas d’ID lors de la réalisation de l’ACP mais il conserve bien l’ordre des lignes mise en entrée:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="analyse-en-composantes-principales.html#cb136-1" tabindex="-1"></a>data_pca<span class="ot">&lt;-</span><span class="fu">bind_cols</span>(data,</span>
-<span id="cb136-2"><a href="analyse-en-composantes-principales.html#cb136-2" tabindex="-1"></a>                    pca<span class="sc">$</span>ind<span class="sc">$</span>coord)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_pca</span><span class="op">&lt;-</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">data</span>,</span>
+<span>                    <span class="va">pca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">)</span></span></code></pre></div>
 <p>On réalise une boucle pour visualiser les 3 premières dimensions en faisant d’abord la jointure entre nos résultats et l’objet commune:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="analyse-en-composantes-principales.html#cb137-1" tabindex="-1"></a>communes_pca<span class="ot">&lt;-</span>communes <span class="sc">%&gt;%</span></span>
-<span id="cb137-2"><a href="analyse-en-composantes-principales.html#cb137-2" tabindex="-1"></a>  <span class="fu">inner_join</span>(data_pca, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;insee&quot;</span><span class="ot">=</span><span class="st">&quot;codecommune&quot;</span>))</span>
-<span id="cb137-3"><a href="analyse-en-composantes-principales.html#cb137-3" tabindex="-1"></a></span>
-<span id="cb137-4"><a href="analyse-en-composantes-principales.html#cb137-4" tabindex="-1"></a></span>
-<span id="cb137-5"><a href="analyse-en-composantes-principales.html#cb137-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
-<span id="cb137-6"><a href="analyse-en-composantes-principales.html#cb137-6" tabindex="-1"></a>  <span class="co"># mf_export(x = communes_pca ,</span></span>
-<span id="cb137-7"><a href="analyse-en-composantes-principales.html#cb137-7" tabindex="-1"></a>  <span class="co">#           filename =paste0(&quot;TP09/carte_acp_dim&quot;,i,&quot;.png&quot; ),</span></span>
-<span id="cb137-8"><a href="analyse-en-composantes-principales.html#cb137-8" tabindex="-1"></a>  <span class="co">#           width = 900)</span></span>
-<span id="cb137-9"><a href="analyse-en-composantes-principales.html#cb137-9" tabindex="-1"></a>  <span class="fu">mf_map</span>(communes_pca ,</span>
-<span id="cb137-10"><a href="analyse-en-composantes-principales.html#cb137-10" tabindex="-1"></a>         <span class="at">var=</span> <span class="fu">paste0</span>(<span class="st">&quot;Dim.&quot;</span>,i),</span>
-<span id="cb137-11"><a href="analyse-en-composantes-principales.html#cb137-11" tabindex="-1"></a>         <span class="at">type=</span><span class="st">&quot;choro&quot;</span>,</span>
-<span id="cb137-12"><a href="analyse-en-composantes-principales.html#cb137-12" tabindex="-1"></a>         <span class="at">pal=</span> <span class="st">&quot;Viridis&quot;</span>,</span>
-<span id="cb137-13"><a href="analyse-en-composantes-principales.html#cb137-13" tabindex="-1"></a>         <span class="at">lwd=</span><span class="fl">0.001</span>)</span>
-<span id="cb137-14"><a href="analyse-en-composantes-principales.html#cb137-14" tabindex="-1"></a>  <span class="fu">mf_map</span>(<span class="at">x =</span> departements_Paris, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;gray25&quot;</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">add=</span>T)</span>
-<span id="cb137-15"><a href="analyse-en-composantes-principales.html#cb137-15" tabindex="-1"></a>  <span class="co"># dev.off()</span></span>
-<span id="cb137-16"><a href="analyse-en-composantes-principales.html#cb137-16" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-1.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-2.png" width="672" /><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-3.png" width="672" /></p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="analyse-en-composantes-principales.html#cb138-1" tabindex="-1"></a><span class="fu">rm</span>(i,communes_pca)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes_pca</span><span class="op">&lt;-</span><span class="va">communes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">data_pca</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"insee"</span><span class="op">=</span><span class="st">"codecommune"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="co"># mf_export(x = communes_pca ,</span></span>
+<span>  <span class="co">#           filename =paste0("TP09/carte_acp_dim",i,".png" ),</span></span>
+<span>  <span class="co">#           width = 900)</span></span>
+<span>  <span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">communes_pca</span> ,</span>
+<span>         var<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Dim."</span>,<span class="va">i</span><span class="op">)</span>,</span>
+<span>         type<span class="op">=</span><span class="st">"choro"</span>,</span>
+<span>         pal<span class="op">=</span> <span class="st">"Viridis"</span>,</span>
+<span>         lwd<span class="op">=</span><span class="fl">0.001</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">departements_Paris</span>, col <span class="op">=</span> <span class="cn">NA</span>, border <span class="op">=</span> <span class="st">"gray25"</span>, lwd <span class="op">=</span> <span class="fl">1</span>, add<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span>  <span class="co"># dev.off()</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-75-1.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-75-2.png" width="672"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-75-3.png" width="672"></p>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">i</span>,<span class="va">communes_pca</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="ajouter-des-variables-supplémentaires" class="section level2 hasAnchor" number="2.8">
-<h2><span class="header-section-number">2.8</span> Ajouter des variables supplémentaires<a href="analyse-en-composantes-principales.html#ajouter-des-variables-supplémentaires" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ajouter-des-variables-supplémentaires" class="section level2" number="2.6">
+<h2>
+<span class="header-section-number">2.6</span> Ajouter des variables supplémentaires<a class="anchor" aria-label="anchor" href="#ajouter-des-variables-suppl%C3%A9mentaires"><i class="fas fa-link"></i></a>
+</h2>
 <p>Pour aider à l’interprétation des axes, il peut être utile d’importer des nouvelles variables qui ne seront pas utilisées dans l’ACP mais qu’on pourra néanmoins utiliser comme repère.</p>
-<div id="importation-des-données-1" class="section level3 hasAnchor" number="2.8.1">
-<h3><span class="header-section-number">2.8.1</span> Importation des données<a href="analyse-en-composantes-principales.html#importation-des-données-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="population" class="section level4 hasAnchor" number="2.8.1.1">
-<h4><span class="header-section-number">2.8.1.1</span> Population<a href="analyse-en-composantes-principales.html#population" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="importation-des-données-1" class="section level3" number="2.6.1">
+<h3>
+<span class="header-section-number">2.6.1</span> Importation des données<a class="anchor" aria-label="anchor" href="#importation-des-donn%C3%A9es-1"><i class="fas fa-link"></i></a>
+</h3>
+<div id="population" class="section level4" number="2.6.1.1">
+<h4>
+<span class="header-section-number">2.6.1.1</span> Population<a class="anchor" aria-label="anchor" href="#population"><i class="fas fa-link"></i></a>
+</h4>
 <p>On importe les données de population:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="analyse-en-composantes-principales.html#cb139-1" tabindex="-1"></a>pop<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">&quot;data/France/population_insee_2021.xlsx&quot;</span>, <span class="at">sheet=</span><span class="st">&quot;Communes&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb139-2"><a href="analyse-en-composantes-principales.html#cb139-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">codecommune=</span><span class="fu">paste0</span>(<span class="st">`</span><span class="at">Code département</span><span class="st">`</span>, <span class="st">`</span><span class="at">Code commune</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb139-3"><a href="analyse-en-composantes-principales.html#cb139-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Code région</span><span class="st">`</span><span class="sc">==</span><span class="st">&quot;11&quot;</span>) <span class="co"># on garde que la France métropolitaine</span></span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pop</span><span class="op">&lt;-</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/France/population_insee_2021.xlsx"</span>, sheet<span class="op">=</span><span class="st">"Communes"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>codecommune<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">`Code département`</span>, <span class="va">`Code commune`</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">`Code région`</span><span class="op">==</span><span class="st">"11"</span><span class="op">)</span> <span class="co"># on garde que la France métropolitaine</span></span></code></pre></div>
 <p>On joint avec le fichier spatial des communes et calcul la densité de population</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="analyse-en-composantes-principales.html#cb140-1" tabindex="-1"></a>communes_pop<span class="ot">&lt;-</span> communes <span class="sc">%&gt;%</span></span>
-<span id="cb140-2"><a href="analyse-en-composantes-principales.html#cb140-2" tabindex="-1"></a>  <span class="fu">left_join</span>(pop, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;insee&quot;</span><span class="ot">=</span><span class="st">&quot;codecommune&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb140-3"><a href="analyse-en-composantes-principales.html#cb140-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">densite_ha=</span><span class="st">`</span><span class="at">Population totale</span><span class="st">`</span><span class="sc">/</span>surface) <span class="sc">%&gt;%</span></span>
-<span id="cb140-4"><a href="analyse-en-composantes-principales.html#cb140-4" tabindex="-1"></a>  <span class="fu">select</span>(insee, densite_ha)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes_pop</span><span class="op">&lt;-</span> <span class="va">communes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">pop</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"insee"</span><span class="op">=</span><span class="st">"codecommune"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>densite_ha<span class="op">=</span><span class="va">`Population totale`</span><span class="op">/</span><span class="va">surface</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">insee</span>, <span class="va">densite_ha</span><span class="op">)</span></span></code></pre></div>
 <p>On peut réaliser une carte de la densité de population</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="analyse-en-composantes-principales.html#cb141-1" tabindex="-1"></a><span class="co"># mf_export(x = communes_pop ,</span></span>
-<span id="cb141-2"><a href="analyse-en-composantes-principales.html#cb141-2" tabindex="-1"></a><span class="co">#           filename =paste0(&quot;TP09/carte_densite.png&quot; ),</span></span>
-<span id="cb141-3"><a href="analyse-en-composantes-principales.html#cb141-3" tabindex="-1"></a><span class="co">#           width = 900)</span></span>
-<span id="cb141-4"><a href="analyse-en-composantes-principales.html#cb141-4" tabindex="-1"></a><span class="fu">mf_map</span>(communes_pop ,</span>
-<span id="cb141-5"><a href="analyse-en-composantes-principales.html#cb141-5" tabindex="-1"></a>       <span class="at">var=</span> <span class="st">&quot;densite_ha&quot;</span>,</span>
-<span id="cb141-6"><a href="analyse-en-composantes-principales.html#cb141-6" tabindex="-1"></a>       <span class="at">type=</span><span class="st">&quot;choro&quot;</span>,</span>
-<span id="cb141-7"><a href="analyse-en-composantes-principales.html#cb141-7" tabindex="-1"></a>       <span class="at">pal=</span> <span class="st">&quot;Viridis&quot;</span>,</span>
-<span id="cb141-8"><a href="analyse-en-composantes-principales.html#cb141-8" tabindex="-1"></a>       <span class="at">lwd=</span><span class="fl">0.001</span>)</span>
-<span id="cb141-9"><a href="analyse-en-composantes-principales.html#cb141-9" tabindex="-1"></a><span class="fu">mf_map</span>(<span class="at">x =</span> departements_Paris, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">add=</span>T)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="analyse-en-composantes-principales.html#cb142-1" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># mf_export(x = communes_pop ,</span></span>
+<span><span class="co">#           filename =paste0("TP09/carte_densite.png" ),</span></span>
+<span><span class="co">#           width = 900)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">communes_pop</span> ,</span>
+<span>       var<span class="op">=</span> <span class="st">"densite_ha"</span>,</span>
+<span>       type<span class="op">=</span><span class="st">"choro"</span>,</span>
+<span>       pal<span class="op">=</span> <span class="st">"Viridis"</span>,</span>
+<span>       lwd<span class="op">=</span><span class="fl">0.001</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">departements_Paris</span>, col <span class="op">=</span> <span class="cn">NA</span>, border <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">1</span>, add<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-78-1.png" width="672"></div>
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#dev.off()</span></span></code></pre></div>
 <p>On enlève transforme l’objet en dataframe et on enlève la colonne geom:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="analyse-en-composantes-principales.html#cb143-1" tabindex="-1"></a>communes_pop_df<span class="ot">&lt;-</span>communes_pop <span class="sc">%&gt;%</span></span>
-<span id="cb143-2"><a href="analyse-en-composantes-principales.html#cb143-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb143-3"><a href="analyse-en-composantes-principales.html#cb143-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>geom)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes_pop_df</span><span class="op">&lt;-</span><span class="va">communes_pop</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">geom</span><span class="op">)</span></span></code></pre></div>
 <p>On réalise la jointure avec les données de base:</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="analyse-en-composantes-principales.html#cb144-1" tabindex="-1"></a>data<span class="ot">&lt;-</span>data <span class="sc">%&gt;%</span></span>
-<span id="cb144-2"><a href="analyse-en-composantes-principales.html#cb144-2" tabindex="-1"></a>  <span class="fu">left_join</span>(communes_pop_df, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;codecommune&quot;</span><span class="ot">=</span><span class="st">&quot;insee&quot;</span>))</span>
-<span id="cb144-3"><a href="analyse-en-composantes-principales.html#cb144-3" tabindex="-1"></a></span>
-<span id="cb144-4"><a href="analyse-en-composantes-principales.html#cb144-4" tabindex="-1"></a><span class="fu">rm</span>(pop,communes_pop, communes_pop_df)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">communes_pop_df</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"codecommune"</span><span class="op">=</span><span class="st">"insee"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">pop</span>,<span class="va">communes_pop</span>, <span class="va">communes_pop_df</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="revenus" class="section level4 hasAnchor" number="2.8.1.2">
-<h4><span class="header-section-number">2.8.1.2</span> Revenus<a href="analyse-en-composantes-principales.html#revenus" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="revenus" class="section level4" number="2.6.1.2">
+<h4>
+<span class="header-section-number">2.6.1.2</span> Revenus<a class="anchor" aria-label="anchor" href="#revenus"><i class="fas fa-link"></i></a>
+</h4>
 <p>On importe les données de revenus, on conserve les champ qui nous intéresse et on transforme le champ revenu médian en “numeric”:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="analyse-en-composantes-principales.html#cb145-1" tabindex="-1"></a>revenus<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">&quot;data/France/FILO2021_DEC_COM.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb145-2"><a href="analyse-en-composantes-principales.html#cb145-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">revenus=</span><span class="fu">as.numeric</span>(revenu_median)) <span class="sc">%&gt;%</span></span>
-<span id="cb145-3"><a href="analyse-en-composantes-principales.html#cb145-3" tabindex="-1"></a>  <span class="fu">select</span>(CODGEO, revenus)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">revenus</span><span class="op">&lt;-</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/France/FILO2021_DEC_COM.xlsx"</span>, sheet<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>revenus<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">revenu_median</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">CODGEO</span>, <span class="va">revenus</span><span class="op">)</span></span></code></pre></div>
 <p>On joint avec le fichier spatial des communes et les revenus:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="analyse-en-composantes-principales.html#cb146-1" tabindex="-1"></a>communes_revenus<span class="ot">&lt;-</span> communes <span class="sc">%&gt;%</span></span>
-<span id="cb146-2"><a href="analyse-en-composantes-principales.html#cb146-2" tabindex="-1"></a>  <span class="fu">left_join</span>(revenus, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;insee&quot;</span><span class="ot">=</span><span class="st">&quot;CODGEO&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">communes_revenus</span><span class="op">&lt;-</span> <span class="va">communes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">revenus</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"insee"</span><span class="op">=</span><span class="st">"CODGEO"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>On peut réaliser une carte de revenu:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="analyse-en-composantes-principales.html#cb147-1" tabindex="-1"></a><span class="co"># mf_export(x = communes_revenus ,</span></span>
-<span id="cb147-2"><a href="analyse-en-composantes-principales.html#cb147-2" tabindex="-1"></a><span class="co">#           filename =paste0(&quot;TP09/carte_revenus.png&quot; ),</span></span>
-<span id="cb147-3"><a href="analyse-en-composantes-principales.html#cb147-3" tabindex="-1"></a><span class="co">#           width = 900)</span></span>
-<span id="cb147-4"><a href="analyse-en-composantes-principales.html#cb147-4" tabindex="-1"></a><span class="fu">mf_map</span>(communes_revenus ,</span>
-<span id="cb147-5"><a href="analyse-en-composantes-principales.html#cb147-5" tabindex="-1"></a>       <span class="at">var=</span> <span class="st">&quot;revenus&quot;</span>,</span>
-<span id="cb147-6"><a href="analyse-en-composantes-principales.html#cb147-6" tabindex="-1"></a>       <span class="at">type=</span><span class="st">&quot;choro&quot;</span>,</span>
-<span id="cb147-7"><a href="analyse-en-composantes-principales.html#cb147-7" tabindex="-1"></a>       <span class="at">pal=</span> <span class="st">&quot;Viridis&quot;</span>,</span>
-<span id="cb147-8"><a href="analyse-en-composantes-principales.html#cb147-8" tabindex="-1"></a>       <span class="at">lwd=</span><span class="fl">0.001</span>)</span>
-<span id="cb147-9"><a href="analyse-en-composantes-principales.html#cb147-9" tabindex="-1"></a><span class="fu">mf_map</span>(<span class="at">x =</span> departements_Paris, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">add=</span>T)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="analyse-en-composantes-principales.html#cb148-1" tabindex="-1"></a><span class="co">#dev.off()</span></span>
-<span id="cb148-2"><a href="analyse-en-composantes-principales.html#cb148-2" tabindex="-1"></a></span>
-<span id="cb148-3"><a href="analyse-en-composantes-principales.html#cb148-3" tabindex="-1"></a><span class="fu">rm</span>(communes_revenus)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># mf_export(x = communes_revenus ,</span></span>
+<span><span class="co">#           filename =paste0("TP09/carte_revenus.png" ),</span></span>
+<span><span class="co">#           width = 900)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">communes_revenus</span> ,</span>
+<span>       var<span class="op">=</span> <span class="st">"revenus"</span>,</span>
+<span>       type<span class="op">=</span><span class="st">"choro"</span>,</span>
+<span>       pal<span class="op">=</span> <span class="st">"Viridis"</span>,</span>
+<span>       lwd<span class="op">=</span><span class="fl">0.001</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">departements_Paris</span>, col <span class="op">=</span> <span class="cn">NA</span>, border <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">1</span>, add<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-83-1.png" width="672"></div>
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#dev.off()</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">communes_revenus</span><span class="op">)</span></span></code></pre></div>
 <p>On réalise la jointure avec les données de base:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="analyse-en-composantes-principales.html#cb149-1" tabindex="-1"></a>data<span class="ot">&lt;-</span>data <span class="sc">%&gt;%</span></span>
-<span id="cb149-2"><a href="analyse-en-composantes-principales.html#cb149-2" tabindex="-1"></a>  <span class="fu">left_join</span>(revenus, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;codecommune&quot;</span><span class="ot">=</span><span class="st">&quot;CODGEO&quot;</span>))</span>
-<span id="cb149-3"><a href="analyse-en-composantes-principales.html#cb149-3" tabindex="-1"></a><span class="fu">rm</span>(revenus)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">revenus</span>, by<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"codecommune"</span><span class="op">=</span><span class="st">"CODGEO"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">revenus</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="acp-avec-les-variables-supplémentaires" class="section level3 hasAnchor" number="2.8.2">
-<h3><span class="header-section-number">2.8.2</span> ACP avec les variables supplémentaires<a href="analyse-en-composantes-principales.html#acp-avec-les-variables-supplémentaires" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="analyse-en-composantes-principales.html#cb150-1" tabindex="-1"></a>pca<span class="ot">&lt;-</span><span class="fu">PCA</span>(data[,<span class="dv">20</span><span class="sc">:</span><span class="dv">33</span>], <span class="at">quanti.sup =</span> <span class="dv">13</span><span class="sc">:</span><span class="dv">14</span>, <span class="at">row.w =</span>data<span class="sc">$</span>exprimes, <span class="at">graph=</span>F, <span class="at">ncp =</span> <span class="cn">NULL</span>)</span></code></pre></div>
-<pre><code>## Warning in PCA(data[, 20:33], quanti.sup = 13:14, row.w =
-## data$exprimes, : Missing values are imputed by the mean of
-## the variable: you should use the imputePCA function of the
-## missMDA package</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="analyse-en-composantes-principales.html#cb152-1" tabindex="-1"></a>cercle_1_2<span class="ot">&lt;-</span><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))<span class="sc">+</span></span>
-<span id="cb152-2"><a href="analyse-en-composantes-principales.html#cb152-2" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb152-3"><a href="analyse-en-composantes-principales.html#cb152-3" tabindex="-1"></a>cercle_1_2</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="analyse-en-composantes-principales.html#cb153-1" tabindex="-1"></a><span class="co">#ggsave(cercle_1_2,filename=&quot;TP09/cercle_correlation_1_2_revenu_pop.png&quot;, width=7, height=7, bg=&quot;white&quot;)</span></span>
-<span id="cb153-2"><a href="analyse-en-composantes-principales.html#cb153-2" tabindex="-1"></a><span class="fu">rm</span>(cercle_1_2)</span>
-<span id="cb153-3"><a href="analyse-en-composantes-principales.html#cb153-3" tabindex="-1"></a></span>
-<span id="cb153-4"><a href="analyse-en-composantes-principales.html#cb153-4" tabindex="-1"></a></span>
-<span id="cb153-5"><a href="analyse-en-composantes-principales.html#cb153-5" tabindex="-1"></a>cercle_1_3<span class="ot">&lt;-</span><span class="fu">fviz_pca_var</span>(pca,  <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))<span class="sc">+</span></span>
-<span id="cb153-6"><a href="analyse-en-composantes-principales.html#cb153-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb153-7"><a href="analyse-en-composantes-principales.html#cb153-7" tabindex="-1"></a>cercle_1_3</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-85-2.png" width="672" /></p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="analyse-en-composantes-principales.html#cb154-1" tabindex="-1"></a><span class="co">#ggsave(cercle_1_3,filename=&quot;TP09/cercle_correlation_1_3_revenu_pop.png&quot;, width=7, height=7, bg=&quot;white&quot;)</span></span>
-<span id="cb154-2"><a href="analyse-en-composantes-principales.html#cb154-2" tabindex="-1"></a><span class="fu">rm</span>(cercle_1_3)</span></code></pre></div>
+<div id="acp-avec-les-variables-supplémentaires" class="section level3" number="2.6.2">
+<h3>
+<span class="header-section-number">2.6.2</span> ACP avec les variables supplémentaires<a class="anchor" aria-label="anchor" href="#acp-avec-les-variables-suppl%C3%A9mentaires"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pca</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/FactoMineR/man/PCA.html">PCA</a></span><span class="op">(</span><span class="va">data</span><span class="op">[</span>,<span class="fl">20</span><span class="op">:</span><span class="fl">33</span><span class="op">]</span>, quanti.sup <span class="op">=</span> <span class="fl">13</span><span class="op">:</span><span class="fl">14</span>, row.w <span class="op">=</span><span class="va">data</span><span class="op">$</span><span class="va">exprimes</span>, graph<span class="op">=</span><span class="cn">F</span>, ncp <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning in PCA(data[, 20:33], quanti.sup = 13:14, row.w = data$exprimes, :
+## Missing values are imputed by the mean of the variable: you should use the
+## imputePCA function of the missMDA package</code></pre>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cercle_1_2</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">cercle_1_2</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-85-1.png" width="672"></div>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#ggsave(cercle_1_2,filename="TP09/cercle_correlation_1_2_revenu_pop.png", width=7, height=7, bg="white")</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">cercle_1_2</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">cercle_1_3</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_pca.html">fviz_pca_var</a></span><span class="op">(</span><span class="va">pca</span>,  axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">cercle_1_3</span></span></code></pre></div>
+<div class="inline-figure"><img src="manuel_geo_quanti_files/figure-html/unnamed-chunk-85-2.png" width="672"></div>
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#ggsave(cercle_1_3,filename="TP09/cercle_correlation_1_3_revenu_pop.png", width=7, height=7, bg="white")</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">cercle_1_3</span><span class="op">)</span></span></code></pre></div>
 <p>On observe des fortes corrélations entre la première dimension qui dépeind une opposition gauche-droite et la variable de revenus, les revenus élevés étant associés aux communes où le vote de droite est important. La seconde dimension est quant à elle fortement corrélée à la densité de population et permet d’interprétée cette dernière comme l’opposition centre urbain-périphérie</p>
 </div>
 </div>
-<div id="aller-plus-loin" class="section level2 hasAnchor" number="2.9">
-<h2><span class="header-section-number">2.9</span> Aller plus loin<a href="analyse-en-composantes-principales.html#aller-plus-loin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="aller-plus-loin" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> Aller plus loin<a class="anchor" aria-label="anchor" href="#aller-plus-loin"><i class="fas fa-link"></i></a>
+</h2>
 <p>Il est possible de faire des ACP sur des données d’enquêtes soit en utilisant les poids comme présenté précédement soit grâce au package :svyprcomp (<a href="https://r-survey.r-forge.r-project.org/survey/html/svyprcomp.html" class="uri">https://r-survey.r-forge.r-project.org/survey/html/svyprcomp.html</a>)</p>
 <p>On peut vouloir réaliser des légères rotations des axes pour améliorer la lecture des axes: <a href="https://stats.stackexchange.com/questions/59213/how-to-compute-varimax-rotated-principal-components-in-r%20https://dimension.usherbrooke.ca/pages/87">https://stats.stackexchange.com/questions/59213/how-to-compute-varimax-rotated-principal-components-in-r https://dimension.usherbrooke.ca/pages/87</a></p>
 <p><a href="https://sites.google.com/site/rgraphiques/4--stat/machine-learning-biostatistiques-analyse-de-donn%C3%A9es/analyse-en-composantes-principales/la-rotation-varimax" class="uri">https://sites.google.com/site/rgraphiques/4--stat/machine-learning-biostatistiques-analyse-de-donn%C3%A9es/analyse-en-composantes-principales/la-rotation-varimax</a></p>
 </div>
-<div id="ressources-utilisées" class="section level2 hasAnchor" number="2.10">
-<h2><span class="header-section-number">2.10</span> Ressources utilisées:<a href="analyse-en-composantes-principales.html#ressources-utilisées" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ressources-utilisées" class="section level2" number="2.8">
+<h2>
+<span class="header-section-number">2.8</span> Ressources utilisées<a class="anchor" aria-label="anchor" href="#ressources-utilis%C3%A9es"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li><p><a href="http://www.sthda.com/english/wiki/wiki.php?id_contents=7851" class="uri">http://www.sthda.com/english/wiki/wiki.php?id_contents=7851</a></p></li>
 <li><p><a href="http://factominer.free.fr/index_fr.html" class="uri">http://factominer.free.fr/index_fr.html</a></p></li>
 </ul>
-
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="r%C3%A9gressions.html"><span class="header-section-number">1</span> Régressions</a></div>
+<div class="next"><a href="classification.html"><span class="header-section-number">3</span> Classification</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#analyse-en-composantes-principales"><span class="header-section-number">2</span> Analyse en Composantes Principales</a></li>
+<li><a class="nav-link" href="#objectifs"><span class="header-section-number">2.1</span> Objectifs</a></li>
+<li>
+<a class="nav-link" href="#donn%C3%A9es"><span class="header-section-number">2.2</span> Données</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#importation-des-donn%C3%A9es"><span class="header-section-number">2.2.1</span> Importation des données</a></li>
+<li><a class="nav-link" href="#recodage"><span class="header-section-number">2.2.2</span> Recodage</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#premi%C3%A8re-visualisation-des-donn%C3%A9es"><span class="header-section-number">2.3</span> Première visualisation des données</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#une-carte-par-variable"><span class="header-section-number">2.3.1</span> Une carte par variable</a></li>
+<li><a class="nav-link" href="#matrice-de-corr%C3%A9lation"><span class="header-section-number">2.3.2</span> Matrice de corrélation</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#r%C3%A9aliser-lacp"><span class="header-section-number">2.4</span> Réaliser l’ACP</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#une-acp-non-pond%C3%A9r%C3%A9e"><span class="header-section-number">2.4.1</span> Une ACP non pondérée</a></li>
+<li><a class="nav-link" href="#pond%C3%A9rer-le-calcul-de-lacp"><span class="header-section-number">2.4.2</span> Pondérer le calcul de l’ACP</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#visualiser-les-r%C3%A9sultats"><span class="header-section-number">2.5</span> Visualiser les résultats</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#cercles-de-corr%C3%A9lation"><span class="header-section-number">2.5.1</span> Cercles de corrélation</a></li>
+<li><a class="nav-link" href="#contributions-de-chaque-variables"><span class="header-section-number">2.5.2</span> Contributions de chaque variables</a></li>
+<li><a class="nav-link" href="#valeurs-propres-et-de-la-variance-expliqu%C3%A9e"><span class="header-section-number">2.5.3</span> Valeurs propres et % de la variance expliquée</a></li>
+<li><a class="nav-link" href="#carte-de-scores"><span class="header-section-number">2.5.4</span> Carte de scores</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#ajouter-des-variables-suppl%C3%A9mentaires"><span class="header-section-number">2.6</span> Ajouter des variables supplémentaires</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#importation-des-donn%C3%A9es-1"><span class="header-section-number">2.6.1</span> Importation des données</a></li>
+<li><a class="nav-link" href="#acp-avec-les-variables-suppl%C3%A9mentaires"><span class="header-section-number">2.6.2</span> ACP avec les variables supplémentaires</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#aller-plus-loin"><span class="header-section-number">2.7</span> Aller plus loin</a></li>
+<li><a class="nav-link" href="#ressources-utilis%C3%A9es"><span class="header-section-number">2.8</span> Ressources utilisées</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="régressions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="classification.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Méthodes Quantitatives en Géographie</strong>" was written by Hugo Périlleux. It was last built on 2024-10-18.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-acp.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -978,7 +865,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
