@@ -1,4 +1,4 @@
-Manuel de Méthode Quantitative en Géographie
+# Manuel de Méthode Quantitative en Géographie
 
 Ce manuel est le matériel des travaux pratiques 2024-2025 pour le cours GEOG-F-404 Méthodes Quantitatives en Géographie à l’Université Libre de Bruxelles.
 
