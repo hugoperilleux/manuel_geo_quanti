@@ -1,0 +1,25 @@
+---
+title: "Méthodes Quantitatives en Géographie"
+author: "Hugo Périlleux"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: hugoperilleux/manuel_geo_quanti
+description: "Ce manuel est le matériel des travaux pratiques pour le cours GEOG-F-404 Méthode quantitative en géographie à l'Université Libre de Bruxelles. "
+---
+
+# Introduction {-}
+
+Ce manuel est le matériel des travaux pratiques pour le cours GEOG-F-404 Méthode quantitative en géographie à l'Université Libre de Bruxelles.
+
+Il contient 3 chapitres:
+
+1.  Régression linéaires
+
+2.  Analyse en composantes principales
+
+3.  Classification
